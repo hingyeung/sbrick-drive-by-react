@@ -1,0 +1,6 @@
+https://www.npmjs.com/package/@types/react-beautiful-dnd wasn't up-to-date with react-beautiful-dnd (6.0.0) at the time of writing.
+
+Manually copied up-to-date type definition file from https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react-beautiful-dnd/index.d.ts to node_modules/@types/react-beautiful-dnd/index.d.ts.
+
+Also needed to add:
+export type DraggableStyle = DraggingStyle | NotDraggingStyle;

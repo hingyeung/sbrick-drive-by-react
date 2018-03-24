@@ -1,0 +1,6 @@
+.instruction-source {
+    padding: 16px;
+    background-color: lightgreen;
+    userSelect: 'none';
+    margin : 0 0 8px 0;
+}
