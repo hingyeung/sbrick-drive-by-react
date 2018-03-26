@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import { InstructionSource } from '../models/InstructionSource';
+import { InstructionSource } from '../../models/InstructionSource';
 import './InstructionSourceWidget.css';
 
 interface InstructionSourceWidgetPropsType {

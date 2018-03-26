@@ -1,28 +1,22 @@
-import { DragDropContext, DragStart, Droppable, DroppableProvided, DroppableStateSnapshot } from 'react-beautiful-dnd';
+import { DragDropContext, DragStart } from 'react-beautiful-dnd';
 import * as React from 'react';
 import './App.css';
-// import InstructionSourceWidget from './components/InstructionSourceWidget';
 import { InstructionSource } from './models/InstructionSource';
-import InstructionSourceWidget from './components/InstructionSourceWidget';
-
-// interface Item  {
-//     id: string;
-//     content: string;
-//     status?: string;
-// }
+import InstructionSourceWidget from './components/InstructionSourceWidget/InstructionSourceWidget';
+import InstructionSourceContainer from './components/InstructionSourceContainer/InstructionSourceContainer';
 
 interface State {
     items: InstructionSource[];
     status: string;
 }
 
-const grid = 8;
+// const grid = 8;
 
-const getListStyle = (isDraggingOver: boolean): object => ({
-    background: isDraggingOver ? 'lightblue' : 'lightgrey',
-    padding: grid,
-    width: 250
-});
+// const getListStyle = (isDraggingOver: boolean): object => ({
+//     background: isDraggingOver ? 'lightblue' : 'lightgrey',
+//     padding: grid,
+//     width: 250
+// });
 
 // fake data generator
 const getItems = (count: number): InstructionSource[] =>
@@ -91,15 +85,6 @@ export default class App extends React.Component<{}, State> {
         });
     }
 
-    droppableChildFunc = (dropProvided: DroppableProvided, snapshot: DroppableStateSnapshot) => (
-        <div
-            ref={dropProvided.innerRef}
-            style={getListStyle(snapshot.isDraggingOver)}
-        >
-            {this.buildDraggableContent()}
-        </div>
-    )
-
     render() {
         return (
             <DragDropContext
@@ -107,42 +92,11 @@ export default class App extends React.Component<{}, State> {
                 onDragUpdate={this.onDragUpdate}
                 onDragEnd={this.onDragEnd}
             >
-                <Droppable droppableId="droppable">
-                    {this.droppableChildFunc}
-                </Droppable>
+                <InstructionSourceContainer droppableId="droppable">
+                    {this.buildDraggableContent()}
+                </InstructionSourceContainer>
                 <div>{this.state.status}</div>
             </DragDropContext>
         );
     }
 }
-
-// export default App;
-/*
-<InstructionSourceWidget key={index} instruction={item}/>
-
-<Draggable draggableId={item.id as any as string} index={index} key={item.id}>
-                    {(provided, snapshot) => {
-                        // this line is need to cast DraggableStyle to Object, so that
-                        // type checking of style prop will pass for React.
-                        const myStyle: Object = {...provided.draggableProps.style};
-                        return (
-                            <div>
-                                <div
-                                    ref={provided.innerRef}
-                                    // style={getItemStyle(
-                                    //     provided.draggableProps.style,
-                                    //     snapshot.isDragging
-                                    // )}
-                                    style={myStyle}
-                                    // style={provided.draggableProps.style}
-                                    {...provided.dragHandleProps}
-                                    className={`${this.state.items[index]} draggable-item`}
-                                >
-                                    {item.displayName}
-                                </div>
-                                {provided.placeholder}
-                            </div>
-                        );
-                    }}
-                </Draggable>
-*/
