@@ -1,0 +1,5 @@
+.instruction-queue-container {
+    width: 350px;
+    height: 500px;
+    border: red solid 1px;
+}

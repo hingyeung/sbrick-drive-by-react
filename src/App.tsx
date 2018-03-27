@@ -1,9 +1,10 @@
-import { DragDropContext, DragStart } from 'react-beautiful-dnd';
+import { DragDropContext, DragStart, DropResult } from 'react-beautiful-dnd';
 import * as React from 'react';
 import './App.css';
 import { InstructionSource } from './models/InstructionSource';
 import InstructionSourceWidget from './components/InstructionSourceWidget/InstructionSourceWidget';
 import InstructionSourceContainer from './components/InstructionSourceContainer/InstructionSourceContainer';
+import InstructionQueueContainer from './components/InstructionQueueContainer/InstructionQueueContainer';
 
 interface State {
     items: InstructionSource[];
@@ -20,7 +21,7 @@ interface State {
 
 // fake data generator
 const getItems = (count: number): InstructionSource[] =>
-    Array.from({ length: count }, (v, k) => k).map(k => ({
+    Array.from({length: count}, (v, k) => k).map(k => ({
         id: k,
         displayName: `item ${k}`,
         command: ''
@@ -70,10 +71,14 @@ export default class App extends React.Component<{}, State> {
             status: 'onDragUpdate'
         });
     }
-    onDragEnd = (result: any) => {
+    onDragEnd = (result: DropResult) => {
         // the only one that is required
         this.setState({
-            status: `onDragEnd ${result.draggableId} ${result.source.index} ${result.destination.index}`
+            status: `onDragEnd ${result.draggableId}
+                src: ${`${result.source.droppableId}:${result.source.index}`} 
+                dest: ${result.destination ?
+                    `${result.destination.droppableId}:${result.destination.index}` : 
+                    'no-dest'}`
         });
     }
 
@@ -92,9 +97,12 @@ export default class App extends React.Component<{}, State> {
                 onDragUpdate={this.onDragUpdate}
                 onDragEnd={this.onDragEnd}
             >
-                <InstructionSourceContainer droppableId="droppable">
-                    {this.buildDraggableContent()}
-                </InstructionSourceContainer>
+                <div className="app-container">
+                    <InstructionSourceContainer droppableId="instruction-source-container">
+                        {this.buildDraggableContent()}
+                    </InstructionSourceContainer>
+                    <InstructionQueueContainer />
+                </div>
                 <div>{this.state.status}</div>
             </DragDropContext>
         );

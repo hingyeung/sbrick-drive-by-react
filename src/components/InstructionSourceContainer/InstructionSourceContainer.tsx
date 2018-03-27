@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Droppable } from 'react-beautiful-dnd';
+import './InstructionSourceContainer.css';
 
 const getListStyle = (isDraggingOver: boolean): object => ({
     background: isDraggingOver ? 'lightblue' : 'lightgrey',
@@ -13,7 +14,7 @@ export default (props: any) => (
             <div
                 ref={provided.innerRef}
                 style={getListStyle(snapshot.isDraggingOver)}
-                className={snapshot.isDraggingOver ? 'dragging-over' : ''}
+                className={`instruction-source-container ${snapshot.isDraggingOver ? 'dragging-over' : ''}`}
             >
                 {props.children}
             </div>
