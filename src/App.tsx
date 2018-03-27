@@ -4,10 +4,16 @@ import './App.css';
 import { InstructionSource } from './models/InstructionSource';
 import InstructionSourceWidget from './components/InstructionSourceWidget/InstructionSourceWidget';
 import InstructionSourceContainer from './components/InstructionSourceContainer/InstructionSourceContainer';
-import InstructionQueueContainer from './components/InstructionQueueContainer/InstructionQueueContainer';
+import InstructionQueueContainer,
+{
+    DROPPABLE_ID as InstructionQueueContainerDroppableId
+} from './components/InstructionQueueContainer/InstructionQueueContainer';
+import { Instruction } from './models/Instruction';
+import InstructionWidget from './components/InstructionWidget/InstructionWidget';
 
 interface State {
-    items: InstructionSource[];
+    instructionSource: InstructionSource[];
+    instructionQueue: Instruction[];
     status: string;
 }
 
@@ -54,7 +60,8 @@ export default class App extends React.Component<{}, State> {
     constructor(props: any) {
         super(props);
         this.state = {
-            items: getItems(3),
+            instructionSource: getItems(3),
+            instructionQueue: [],
             status: 'unknown'
         };
     }
@@ -77,15 +84,31 @@ export default class App extends React.Component<{}, State> {
             status: `onDragEnd ${result.draggableId}
                 src: ${`${result.source.droppableId}:${result.source.index}`} 
                 dest: ${result.destination ?
-                    `${result.destination.droppableId}:${result.destination.index}` : 
-                    'no-dest'}`
+                `${result.destination.droppableId}:${result.destination.index}` :
+                'no-dest'}`
         });
+
+        if (result.destination && result.destination.droppableId === InstructionQueueContainerDroppableId) {
+            const instructionSourceDragged = this.state.instructionSource[result.source.index];
+            const newInstruction: Instruction = {displayName: instructionSourceDragged.displayName, id: 0};
+            this.setState({
+                instructionQueue: this.state.instructionQueue.concat(newInstruction)
+            });
+        }
     }
 
     buildDraggableContent = () => {
-        return this.state.items.map((item, index) => {
+        return this.state.instructionSource.map((item, index) => {
             return (
                 <InstructionSourceWidget key={index} instruction={item}/>
+            );
+        });
+    }
+
+    buildInstructionDroppables = () => {
+        return this.state.instructionQueue.map((item, index) => {
+            return (
+                <InstructionWidget key={index} instruction={item}/>
             );
         });
     }
@@ -101,7 +124,9 @@ export default class App extends React.Component<{}, State> {
                     <InstructionSourceContainer droppableId="instruction-source-container">
                         {this.buildDraggableContent()}
                     </InstructionSourceContainer>
-                    <InstructionQueueContainer />
+                    <InstructionQueueContainer instructions={this.state.instructionQueue}>
+                        {this.buildInstructionDroppables()}
+                    </InstructionQueueContainer>
                 </div>
                 <div>{this.state.status}</div>
             </DragDropContext>

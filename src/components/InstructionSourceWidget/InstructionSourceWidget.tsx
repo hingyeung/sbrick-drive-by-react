@@ -26,31 +26,3 @@ export default (props: InstructionSourceWidgetPropsType) => (
         }}
     </Draggable>
 );
-
-/*
-<Draggable draggableId={item.id} index={index} key={item.id}>
-    {(provided, snapshot) => {
-        // this line is need to cast DraggableStyle to Object, so that
-        // type checking of style prop will pass for React.
-        const myStyle: Object = {...provided.draggableProps.style};
-        return (
-            <div>
-                <div
-                    ref={provided.innerRef}
-                    // style={getItemStyle(
-                    //     provided.draggableProps.style,
-                    //     snapshot.isDragging
-                    // )}
-                    style={myStyle}
-                    // style={provided.draggableProps.style}
-                    {...provided.dragHandleProps}
-                    className={`${this.state.items[index].status} draggable-item`}
-                >
-                    {item.content}
-                </div>
-                {provided.placeholder}
-            </div>
-        );
-    }}
-</Draggable>
-*/
