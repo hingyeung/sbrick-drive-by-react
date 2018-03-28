@@ -8,8 +8,10 @@ const getListStyle = (isDraggingOver: boolean): object => ({
     width: 250
 });
 
+export const DROPPABLE_ID = 'instruction-source-container-droppable';
+
 export default (props: any) => (
-    <Droppable droppableId={props.droppableId}>
+    <Droppable droppableId={DROPPABLE_ID}>
         {(provided, snapshot) => (
             <div
                 ref={provided.innerRef}

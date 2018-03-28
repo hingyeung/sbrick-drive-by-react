@@ -8,7 +8,7 @@ interface InstructionSourceWidgetPropsType {
 }
 
 export default (props: InstructionSourceWidgetPropsType) => (
-    <Draggable draggableId={props.instruction.id as any as string} index={props.instruction.id}>
+    <Draggable draggableId={props.instruction.id} index={props.instruction.index}>
         {(provided, snapshot) => {
             return (
                 <div>

@@ -1,5 +1,6 @@
 export interface InstructionSource {
-    id: number;
+    id: string;
+    index: number;
     displayName: string;
     command: string;
 }

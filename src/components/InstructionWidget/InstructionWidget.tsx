@@ -7,7 +7,7 @@ interface InstructionWidgetProps {
 }
 
 export default (props: InstructionWidgetProps) => (
-    <Draggable draggableId={props.instruction.id as any as string} index={props.instruction.id}>
+    <Draggable draggableId={props.instruction.id} index={props.instruction.index}>
         {(provided, snapshot) => (
             <div
                 ref={provided.innerRef}
@@ -15,7 +15,7 @@ export default (props: InstructionWidgetProps) => (
                 style={{...provided.draggableProps.style as object}}
                 {...provided.dragHandleProps}
             >
-                Instruction
+                {props.instruction.displayName}
             </div>
         )}
     </Draggable>

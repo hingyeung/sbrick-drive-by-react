@@ -1,4 +1,5 @@
 export interface Instruction {
     displayName: string;
-    id: number;
+    id: string;
+    index: number;
 }
