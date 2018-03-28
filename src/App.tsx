@@ -51,15 +51,6 @@ const getInstructionSources = (count: number): InstructionSource[] =>
 //     // margin: draggableStyle && draggableStyle.margin ? draggableStyle.margin : `0 0 ${grid}px 0`,
 // });
 
-// a little function to help us with reordering the result
-// const reorder = (list: any[], startIndex: number, endIndex: number) => {
-//     const result = Array.from(list);
-//     const [removed] = result.splice(startIndex, 1);
-//     result.splice(endIndex, 0, removed);
-//
-//     return result;
-// };
-
 export default class App extends React.Component<{}, State> {
     constructor(props: any) {
         super(props);
