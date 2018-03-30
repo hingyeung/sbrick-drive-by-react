@@ -5,10 +5,11 @@ import './InstructionSourceWidget.css';
 
 interface InstructionSourceWidgetPropsType {
     instruction: InstructionSource;
+    index: number;
 }
 
 export default (props: InstructionSourceWidgetPropsType) => (
-    <Draggable draggableId={props.instruction.id} index={props.instruction.index}>
+    <Draggable draggableId={props.instruction.id} index={props.index}>
         {(provided, snapshot) => {
             return (
                 <div>

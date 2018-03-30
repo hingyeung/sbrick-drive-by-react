@@ -13,6 +13,7 @@ import InstructionSourceContainer,
 } from './components/InstructionSourceContainer/InstructionSourceContainer';
 import { Instruction } from './models/Instruction';
 import InstructionWidget from './components/InstructionWidget/InstructionWidget';
+import { insert } from './commons/ListUtils';
 
 interface State {
     instructionSource: InstructionSource[];
@@ -85,11 +86,11 @@ export default class App extends React.Component<{}, State> {
         const instructionSourceDragged = this.state.instructionSource[result.source.index];
         const newInstruction: Instruction = {
             displayName: instructionSourceDragged.displayName,
-            id: `instruction-${this.state.instructionQueue.length}`,
-            index: this.state.instructionQueue.length
+            id: `instruction-${this.state.instructionQueue.length}`
         };
         this.setState({
-            instructionQueue: this.state.instructionQueue.concat(newInstruction)
+            // "!" is non-null assertion operator, telling transpiler to be relaxed about the null-check
+            instructionQueue: insert(this.state.instructionQueue, result.destination!.index, newInstruction)
         });
     }
 
@@ -112,7 +113,7 @@ export default class App extends React.Component<{}, State> {
     buildDraggableContent = () => {
         return this.state.instructionSource.map((instructionSource, index) => {
             return (
-                <InstructionSourceWidget key={index} instruction={instructionSource}/>
+                <InstructionSourceWidget key={index} index={index} instruction={instructionSource}/>
             );
         });
     }
@@ -120,7 +121,7 @@ export default class App extends React.Component<{}, State> {
     buildInstructionDroppables = () => {
         return this.state.instructionQueue.map((instruction, index) => {
             return (
-                <InstructionWidget key={index} instruction={instruction}/>
+                <InstructionWidget key={index} index={index} instruction={instruction}/>
             );
         });
     }
