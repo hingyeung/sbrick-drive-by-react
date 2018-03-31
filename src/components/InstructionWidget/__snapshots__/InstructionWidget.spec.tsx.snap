@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InstructionWidget should render properly 1`] = `
+<div>
+  <div>
+    <div
+      className="instruction"
+      style={Object {}}
+    >
+      displayName
+    </div>
+  </div>
+</div>
+`;
