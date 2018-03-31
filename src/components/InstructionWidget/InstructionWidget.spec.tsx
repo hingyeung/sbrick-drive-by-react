@@ -2,6 +2,7 @@ import * as renderer from 'react-test-renderer';
 import * as React from 'react';
 import { Instruction } from '../../models/Instruction';
 import InstructionWidget from './InstructionWidget';
+// https://github.com/facebook/jest/issues/936#issuecomment-214556122
 // rbd is used to mock 'react-beautiful-dnd'
 import * as rbd from 'react-beautiful-dnd';
 import { DraggableProvided } from 'react-beautiful-dnd';

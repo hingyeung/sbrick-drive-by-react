@@ -12,6 +12,7 @@
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts $NODE_DEBUG_OPTION test --env=jsdom",
+    "coverage": "react-scripts-ts $NODE_DEBUG_OPTION test --env=jsdom --coverage",
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
@@ -19,6 +20,8 @@
     "@types/react": "^16.0.40",
     "@types/react-beautiful-dnd": "^4.0.1",
     "@types/react-dom": "^16.0.4",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "react-test-renderer": "^16.3.0",
     "typescript": "^2.7.2"
   }

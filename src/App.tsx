@@ -15,10 +15,10 @@ import { Instruction } from './models/Instruction';
 import InstructionWidget from './components/InstructionWidget/InstructionWidget';
 import { insert, reorder } from './commons/ListUtils';
 
-interface State {
+export interface State {
     instructionSource: InstructionSource[];
     instructionQueue: Instruction[];
-    status: string;
+    status?: string;
 }
 
 // const grid = 8;
@@ -63,16 +63,10 @@ export default class App extends React.Component<{}, State> {
     }
 
     onDragStart = (start: DragStart) => {
-        /*...*/
-        this.setState({
-            status: `onDragStart ${start.source.index}`
-        });
+        //
     }
     onDragUpdate = () => {
-        /*...*/
-        this.setState({
-            status: 'onDragUpdate'
-        });
+        //
     }
     onDragEnd = (result: DropResult) => {
         this.updateStatus(result);
