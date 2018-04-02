@@ -11,3 +11,9 @@ export const insert = (list: any[], index: number, newItem: any) => {
   const tail = list.slice(index, list.length);
   return [...head, newItem, ...tail];
 };
+
+export const remove = (list: any[], index: number) => {
+  const head = list.slice(0, index);
+  const tail = list.slice(index + 1, list.length);
+  return [...head, ...tail];
+};

@@ -23,7 +23,7 @@ const makeInstructionSource = (index: number) => ({
 
 const buildDropResultFor = (draggableId: DraggableId,
                             source: DraggableLocation,
-                            destination: DraggableLocation): DropResult => ({
+                            destination: DraggableLocation | null): DropResult => ({
   draggableId: draggableId,
   type: 'type',
   source: source,
@@ -84,14 +84,40 @@ describe('App', function () {
         index: 1
       }
     );
-    const wrapper = mount(<App/>);
 
+    const wrapper = mount(<App/>);
     wrapper.setState(state);
     wrapper.instance().onDragEnd(result);
 
-    const updatedInstructionQUeue = wrapper.state('instructionQueue');
-    expect(updatedInstructionQUeue.length).toBe(2);
-    expect(updatedInstructionQUeue[0].id).toBe('instruction-1');
-    expect(updatedInstructionQUeue[1].id).toBe('instruction-0');
+    const updatedInstructionQueue = wrapper.state('instructionQueue');
+    expect(updatedInstructionQueue.length).toBe(2);
+    expect(updatedInstructionQueue[0].id).toBe('instruction-1');
+    expect(updatedInstructionQueue[1].id).toBe('instruction-0');
+  });
+
+  it('should remove instruction from InstructionQueue', () => {
+    const state: State = {
+      instructionSource: [],
+      instructionQueue: [
+        makeInstruction(0),
+        makeInstruction(1)
+      ]
+    };
+    const result: DropResult = buildDropResultFor(
+      'instruction-0',
+      {
+        droppableId: InstructionQueueDroppableId,
+        index: 0
+      },
+      null
+    );
+
+    const wrapper = mount(<App/>);
+    wrapper.setState(state);
+    wrapper.instance().onDragEnd(result);
+
+    const updatedInstructionQueue = wrapper.state('instructionQueue');
+    expect(updatedInstructionQueue.length).toBe(1);
+    expect(updatedInstructionQueue[0].id).toBe('instruction-1');
   });
 });

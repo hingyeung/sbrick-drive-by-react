@@ -1,4 +1,4 @@
-import { insert, reorder } from './ListUtils';
+import { insert, remove, reorder } from './ListUtils';
 
 describe('ListUtils', function () {
   let listToModify: number[];
@@ -43,6 +43,18 @@ describe('ListUtils', function () {
 
     it('should insert new item at the end when target index is out-of-bound', function () {
       expect(insert(listToModify, 4, 99)).toEqual([0, 1, 2, 3, 99]);
+    });
+  });
+
+  describe('remove', function () {
+    it('should remove item at the front', function () {
+      expect(remove(listToModify, 0)).toEqual([1, 2, 3]);
+    });
+    it('should remove item in the middle', function () {
+      expect(remove(listToModify, 1)).toEqual([0, 2, 3]);
+    });
+    it('should remove item at the end', function () {
+      expect(remove(listToModify, 3)).toEqual([0, 1, 2]);
     });
   });
 });

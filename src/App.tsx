@@ -11,7 +11,7 @@ import InstructionSourceContainer, {
 } from './components/InstructionSourceContainer/InstructionSourceContainer';
 import { Instruction } from './models/Instruction';
 import InstructionWidget from './components/InstructionWidget/InstructionWidget';
-import { insert, reorder } from './commons/ListUtils';
+import { insert, remove, reorder } from './commons/ListUtils';
 
 export interface State {
   instructionSource: InstructionSource[];
@@ -82,12 +82,29 @@ export default class App extends React.Component<{}, State> {
         InstructionQueueContainerDroppableId)) {
       this.reorderInstructionsWithinInstructionQueue(result);
     }
+
+    if (this.isDraggedFromSrcToNowhere(
+        result,
+        InstructionQueueContainerDroppableId)) {
+      this.removeInstructionFromIntructionQueue(result);
+    }
   }
 
   reorderInstructionsWithinInstructionQueue(result: DropResult) {
     this.setState({
       instructionQueue: reorder(this.state.instructionQueue, result.source.index, result.destination!.index)
     });
+  }
+
+  removeInstructionFromIntructionQueue(result: DropResult) {
+    this.setState({
+      instructionQueue: remove(this.state.instructionQueue, result.source.index)
+    });
+  }
+
+  isDraggedFromSrcToNowhere(result: DropResult, srcDroppableId: string) {
+    return result && result.source && !result.destination &&
+      result.source.droppableId === srcDroppableId;
   }
 
   isDraggedFromSrcToDest(result: DropResult, srcDroppableId: string, destDroppableId: string) {
