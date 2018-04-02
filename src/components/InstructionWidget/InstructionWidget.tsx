@@ -4,24 +4,24 @@ import { Instruction } from '../../models/Instruction';
 import './InstructionWidget.css';
 
 interface InstructionWidgetProps {
-    instruction: Instruction;
-    index: number;
+  instruction: Instruction;
+  index: number;
 }
 
 export default (props: InstructionWidgetProps) => (
-    <Draggable draggableId={props.instruction.id} index={props.index}>
-        {(provided, snapshot) => (
-            <div>
-                <div
-                    ref={provided.innerRef}
-                    className="instruction"
-                    style={{...provided.draggableProps.style as object}}
-                    {...provided.dragHandleProps}
-                >
-                    {props.instruction.displayName}
-                </div>
-                {provided.placeholder}
-            </div>
-        )}
-    </Draggable>
+  <Draggable draggableId={props.instruction.id} index={props.index}>
+    {(provided, snapshot) => (
+      <div>
+        <div
+          ref={provided.innerRef}
+          className="instruction"
+          style={{...provided.draggableProps.style as object}}
+          {...provided.dragHandleProps}
+        >
+          {props.instruction.displayName}
+        </div>
+        {provided.placeholder}
+      </div>
+    )}
+  </Draggable>
 );

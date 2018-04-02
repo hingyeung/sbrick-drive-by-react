@@ -10,41 +10,42 @@ import { DraggableProvided } from 'react-beautiful-dnd';
 jest.mock('react-beautiful-dnd');
 
 const INSTRUCTION: Instruction = {
-    id: 'instructionId',
-    displayName: 'displayName'
+  id: 'instructionId',
+  displayName: 'displayName'
 };
 
 describe('InstructionWidget', function () {
-    beforeEach(() => {
-        const draggableProvided: DraggableProvided = {
-            innerRef: () => {
-                return;
-            },
-            draggableProps: {
-                style: null,
-                'data-react-beautiful-dnd-draggable': ''
-            },
-            dragHandleProps: null
-        };
-        // even though tslint is complaining about "attempted to assign to readonly property",
-        // it works, and I don't know how to do it any other way.
-        rbd.Draggable = ({children}: any) => (<div>{children(draggableProvided)}</div>);
-    });
+  beforeEach(() => {
+    const draggableProvided: DraggableProvided = {
+      innerRef: () => {
+        return;
+      },
+      draggableProps: {
+        style: null,
+        'data-react-beautiful-dnd-draggable': ''
+      },
+      dragHandleProps: null
+    };
+    // even though tslint is complaining about "attempted to assign to readonly property",
+    // it works, and I don't know how to do it any other way.
+    // @ts-ignore
+    rbd.Draggable = ({children}: any) => (<div>{children(draggableProvided)}</div>);
+  });
 
-    it('should render properly', () => {
-        const tree = renderer
-            .create(
-                <InstructionWidget index={0} instruction={INSTRUCTION}/>
-            )
-            .toJSON();
+  it('should render properly', () => {
+    const tree = renderer
+      .create(
+        <InstructionWidget index={0} instruction={INSTRUCTION}/>
+      )
+      .toJSON();
 
-        expect(tree).toMatchSnapshot();
-    });
+    expect(tree).toMatchSnapshot();
+  });
 
-    // it.only('should display instruction displayName', () => {
-    //     const tree = renderer.create(
-    //             <InstructionWidget index={0} instruction={INSTRUCTION}/>
-    //         );
-    //     expect(tree).toContain('displayName');
-    // });
+  // it.only('should display instruction displayName', () => {
+  //     const tree = renderer.create(
+  //             <InstructionWidget index={0} instruction={INSTRUCTION}/>
+  //         );
+  //     expect(tree).toContain('displayName');
+  // });
 });
