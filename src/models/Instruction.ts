@@ -1,4 +1,7 @@
+import { SBrickCommand } from './SBrickCommand';
+
 export interface Instruction {
-  displayName: string;
   id: string;
+  displayName: string;
+  sBrickCommand: SBrickCommand;
 }

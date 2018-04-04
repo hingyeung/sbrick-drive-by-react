@@ -6,12 +6,14 @@ import InstructionWidget from './InstructionWidget';
 // rbd is used to mock 'react-beautiful-dnd'
 import * as rbd from 'react-beautiful-dnd';
 import { DraggableProvided } from 'react-beautiful-dnd';
+import { SBrickCommand } from '../../models/SBrickCommand';
 
 jest.mock('react-beautiful-dnd');
 
 const INSTRUCTION: Instruction = {
   id: 'instructionId',
-  displayName: 'displayName'
+  displayName: 'displayName',
+  sBrickCommand: SBrickCommand.forward
 };
 
 describe('InstructionWidget', function () {

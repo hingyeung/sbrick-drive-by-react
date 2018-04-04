@@ -1,7 +1,6 @@
 import { DragDropContext, DragStart, DropResult } from 'react-beautiful-dnd';
 import * as React from 'react';
 import './App.css';
-import { InstructionSource } from './models/InstructionSource';
 import InstructionSourceWidget from './components/InstructionSourceWidget/InstructionSourceWidget';
 import InstructionQueueContainer, {
   DROPPABLE_ID as InstructionQueueContainerDroppableId
@@ -12,9 +11,11 @@ import InstructionSourceContainer, {
 import { Instruction } from './models/Instruction';
 import InstructionWidget from './components/InstructionWidget/InstructionWidget';
 import { insert, remove, reorder } from './commons/ListUtils';
+import { drive } from './services/SBrickService/SBrickService';
+import { SBrickCommand } from './models/SBrickCommand';
 
 export interface State {
-  instructionSource: InstructionSource[];
+  instructionSource: Instruction[];
   instructionQueue: Instruction[];
   status?: string;
 }
@@ -28,13 +29,24 @@ export interface State {
 // });
 
 // fake data generator
-const getInstructionSources = (count: number): InstructionSource[] =>
-  Array.from({length: count}, (v, k) => k).map(k => ({
-    id: `instructionSource-${k}`,
-    index: k,
-    displayName: `instruction ${k}`,
-    command: ''
-  }));
+// const getInstructionSources = (count: number): Instruction[] =>
+//   Array.from({length: count}, (v, k) => k).map(k => ({
+//     id: `instructionSource-${k}`,
+//     index: k,
+//     displayName: `instruction ${k}`,
+//     sBrickCommand: {command: ''}
+//   }));
+const getInstructionSource = (): Instruction[] =>
+  Array.from(
+    [
+      SBrickCommand.forward, SBrickCommand.backward, SBrickCommand.left, SBrickCommand.right],
+    (cmd, index) => ({
+      id: `instruction-${SBrickCommand[cmd]}`,
+      index: index,
+      displayName: SBrickCommand[cmd],
+      sBrickCommand: cmd
+    })
+  );
 
 // const getItemStyle = (draggableStyle: any, isDragging: boolean): Object => ({
 //     // some basic styles to make the items look a bit nicer
@@ -54,10 +66,11 @@ export default class App extends React.Component<{}, State> {
   constructor(props: any) {
     super(props);
     this.state = {
-      instructionSource: getInstructionSources(3),
+      instructionSource: getInstructionSource(),
       instructionQueue: [],
       status: 'unknown'
     };
+    this.playInstructionsInQueue = this.playInstructionsInQueue.bind(this);
   }
 
   onDragStart = (start: DragStart) => {
@@ -70,22 +83,22 @@ export default class App extends React.Component<{}, State> {
     this.updateStatus(result);
 
     if (this.isDraggedFromSrcToDest(
-        result,
-        InstructionSourceContainerDroppableId,
-        InstructionQueueContainerDroppableId)) {
+      result,
+      InstructionSourceContainerDroppableId,
+      InstructionQueueContainerDroppableId)) {
       this.addInstructionToInstructionQueue(result);
     }
 
     if (this.isDraggedFromSrcToDest(
-        result,
-        InstructionQueueContainerDroppableId,
-        InstructionQueueContainerDroppableId)) {
+      result,
+      InstructionQueueContainerDroppableId,
+      InstructionQueueContainerDroppableId)) {
       this.reorderInstructionsWithinInstructionQueue(result);
     }
 
     if (this.isDraggedFromSrcToNowhere(
-        result,
-        InstructionQueueContainerDroppableId)) {
+      result,
+      InstructionQueueContainerDroppableId)) {
       this.removeInstructionFromIntructionQueue(result);
     }
   }
@@ -117,7 +130,8 @@ export default class App extends React.Component<{}, State> {
     const instructionSourceDragged = this.state.instructionSource[result.source.index];
     const newInstruction: Instruction = {
       displayName: instructionSourceDragged.displayName,
-      id: `instruction-${this.state.instructionQueue.length}`
+      id: `instruction-${this.state.instructionQueue.length}`,
+      sBrickCommand: instructionSourceDragged.sBrickCommand
     };
     this.setState({
       // "!" is non-null assertion operator, telling transpiler to be relaxed about the null-check
@@ -151,6 +165,14 @@ export default class App extends React.Component<{}, State> {
     });
   }
 
+  playInstructionsInQueue = (ev: any) => {
+    // TODO the instruction could go out-of-order on the server side.
+    // Should be async.series()
+    this.state.instructionQueue.forEach((instruction) => {
+      drive(instruction.sBrickCommand).then((resp) => console.log(resp));
+    });
+  }
+
   render() {
     return (
       <DragDropContext
@@ -167,6 +189,7 @@ export default class App extends React.Component<{}, State> {
           </InstructionQueueContainer>
         </div>
         <div>{this.state.status}</div>
+        <button className="play-btn" onClick={this.playInstructionsInQueue}>Play</button>
       </DragDropContext>
     );
   }

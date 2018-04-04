@@ -9,16 +9,12 @@ import {
 import {
   DROPPABLE_ID as InstructionSourceDroppableId
 } from './components/InstructionSourceContainer/InstructionSourceContainer';
+import { SBrickCommand } from './models/SBrickCommand';
 
 const makeInstruction = (index: number) => ({
   displayName: `displayName${index}`,
-  id: `instruction-${index}`
-});
-
-const makeInstructionSource = (index: number) => ({
-  id: `instructionSource-${index}`,
-  displayName: `instruction ${index}`,
-  command: ''
+  id: `instruction-${index}`,
+  sBrickCommand: SBrickCommand.forward
 });
 
 const buildDropResultFor = (draggableId: DraggableId,
@@ -39,8 +35,8 @@ describe('App', function () {
   it('should add instruction to InstructionQueue when InstructionQueus is empty', () => {
     const state: State = {
       instructionSource: [
-        makeInstructionSource(0),
-        makeInstructionSource(1)
+        makeInstruction(0),
+        makeInstruction(1)
       ],
       instructionQueue: []
     };

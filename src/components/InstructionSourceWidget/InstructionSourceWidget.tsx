@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import { InstructionSource } from '../../models/InstructionSource';
 import './InstructionSourceWidget.css';
+import { Instruction } from '../../models/Instruction';
 
 interface InstructionSourceWidgetPropsType {
-  instruction: InstructionSource;
+  instruction: Instruction;
   index: number;
 }
 
