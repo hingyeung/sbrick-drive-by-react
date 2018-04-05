@@ -121,7 +121,7 @@ describe('App', function () {
     expect(updatedInstructionQueue[0].id).toBe('instruction-1');
   });
 
-  it.only('should send instructions to backend in the correct order', (done) => {
+  it('should send instructions to backend in the correct order', (done) => {
     const state: State = {
       instructionSource: [],
       instructionQueue: makeInstructions(3)
