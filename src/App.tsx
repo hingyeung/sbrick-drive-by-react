@@ -63,7 +63,11 @@ const getInstructionSource = (): Instruction[] =>
 //     // margin: draggableStyle && draggableStyle.margin ? draggableStyle.margin : `0 0 ${grid}px 0`,
 // });
 
-export default class App extends React.Component<{}, State> {
+interface AppProps {
+  onInstructionsExecuted?: (result: any) => void;
+}
+
+export default class App extends React.Component<AppProps, State> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -184,7 +188,7 @@ export default class App extends React.Component<{}, State> {
 
   playInstructionsInQueue = (ev: any) => {
     const executionQueue = this.insertInstructionIntoExecutionQueue();
-    series(executionQueue);
+    series(executionQueue, this.props.onInstructionsExecuted);
   }
 
   render() {
