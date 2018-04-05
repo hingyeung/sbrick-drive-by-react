@@ -13,6 +13,7 @@ import InstructionWidget from './components/InstructionWidget/InstructionWidget'
 import { insert, remove, reorder } from './commons/ListUtils';
 import { drive } from './services/SBrickService/SBrickService';
 import { SBrickCommand } from './models/SBrickCommand';
+import { AsyncFunction, series } from 'async';
 
 export interface State {
   instructionSource: Instruction[];
@@ -165,12 +166,25 @@ export default class App extends React.Component<{}, State> {
     });
   }
 
-  playInstructionsInQueue = (ev: any) => {
-    // TODO the instruction could go out-of-order on the server side.
-    // Should be async.series()
+  insertInstructionIntoExecutionQueue = () => {
+    type asyncCallbackType = (err: any, data: any) => void;
+
+    // let executionQueue: ((callback: asyncCallbackType) => void)[] = [];
+    let executionQueue: AsyncFunction<any, any>[] = [];
     this.state.instructionQueue.forEach((instruction) => {
-      drive(instruction.sBrickCommand).then((resp) => console.log(resp));
+      const executor: (callback: asyncCallbackType) => void = (callback) => {
+          drive(instruction.sBrickCommand).then(
+            (resp: any) => callback(null, resp.data)).catch(
+            (err: any) => callback(err, null));
+      };
+      executionQueue.push(executor);
     });
+    return executionQueue;
+  }
+
+  playInstructionsInQueue = (ev: any) => {
+    const executionQueue = this.insertInstructionIntoExecutionQueue();
+    series(executionQueue);
   }
 
   render() {
