@@ -1,5 +1,5 @@
 {
   "sBrickDrive": {
-    "urlPrefix": "http://echo.jsontest.com/"
+    "urlPrefix": "http://localhost:3001"
   }
 }
