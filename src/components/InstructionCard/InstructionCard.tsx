@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { Instruction } from '../../models/Instruction';
-// import './InstructionCard.css';
+import './InstructionCard.css';
 
 export interface Props {
   instruction: Instruction;
@@ -12,10 +12,10 @@ export interface Props {
 export default (props: Props) => (
   <Draggable draggableId={props.instruction.id} index={props.index}>
     {(provided, snapshot) => (
-      <div className={props.className + ' instruction-card'}>
+      <div>
         <div
           ref={provided.innerRef}
-          className="instruction-card"
+          className={props.className + ' instruction-card'}
           style={{...provided.draggableProps.style as object}}
           {...provided.dragHandleProps}
         >

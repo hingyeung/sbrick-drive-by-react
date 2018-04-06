@@ -1,8 +1,8 @@
-.instructionSourceContainer {
-    padding: 8px;
+.instruction-source {
+    padding: 4px;
     background-color: lightgrey;
 }
 
-.instructionSourceContainer--dragging-over {
+.instruction-source--dragging-over {
     background-color: lightblue;
 }
