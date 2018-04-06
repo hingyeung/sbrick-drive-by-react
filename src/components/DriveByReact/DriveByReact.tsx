@@ -197,6 +197,7 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
             <InstructionSource>
               {this.buildInstructionSourceContent()}
             </InstructionSource>
+            <button className="play-btn" onClick={this.playInstructionsInQueue}>Play</button>
           </div>
           <div className="col-sm-8">
             <InstructionQueueContainer instructions={this.state.instructionQueue}>
@@ -205,7 +206,6 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
           </div>
         </div>
         <div>{this.state.status}</div>
-        <button className="play-btn" onClick={this.playInstructionsInQueue}>Play</button>
       </DragDropContext>
     );
   }

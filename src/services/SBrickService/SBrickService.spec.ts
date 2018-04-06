@@ -6,10 +6,15 @@ jest.mock('axios');
 
 describe('SBrickService', () => {
   it('should send GET request to server', function () {
+    const noCacheHeader = {'Cache-Control': 'no-cache'},
+      expectedUrl = 'http://localhost:3030/drive/forward';
     axios.get = jest.fn().mockImplementation((url: string) => Promise.resolve({}));
     drive(SBrickCommand.forward);
 
-    expect(axios.get).toBeCalledWith('http://localhost:3030/drive/forward');
+    expect(axios.get).toBeCalledWith(
+      expectedUrl, {
+        headers: noCacheHeader
+      });
   });
 
   it('should invoke success callback on success', async () => {

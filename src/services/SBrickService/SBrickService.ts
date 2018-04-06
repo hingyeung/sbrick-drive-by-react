@@ -3,7 +3,7 @@ import { getConfigForEnv } from '../ConfigService/ConfigService';
 import axios from 'axios';
 
 const sendRequest = (url: string) => (resolve: any, reject: any) => {
-  axios.get(url).then((response) => {
+  axios.get(url, {headers: {'Cache-Control': 'no-cache'}}).then((response) => {
       resolve(response);
     }
   ).catch((err) => {

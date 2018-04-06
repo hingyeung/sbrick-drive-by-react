@@ -3,5 +3,5 @@ import InstructionCard, { Props as InstructionCardProps } from '../InstructionCa
 import './TemplateInstructionCard.css';
 
 export const TemplateInstructionCard = (props: InstructionCardProps) => {
-  return <InstructionCard className="template-instruction-card" instruction={props.instruction} index={props.index}/>;
+  return <InstructionCard {...props} className="template-instruction-card"/>;
 };
