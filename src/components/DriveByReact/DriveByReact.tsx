@@ -2,18 +2,20 @@ import * as React from 'react';
 import { Component } from 'react';
 import { DragDropContext, DragStart, DropResult } from 'react-beautiful-dnd';
 import { Instruction } from '../../models/Instruction';
-import InstructionSourceContainer, {
+import InstructionSource, {
   DROPPABLE_ID as InstructionSourceContainerDroppableId
-} from '../InstructionSourceContainer/InstructionSourceContainer';
+} from '../InstructionSource/InstructionSource';
 import InstructionQueueContainer, {
   DROPPABLE_ID as InstructionQueueContainerDroppableId
-} from '../InstructionQueueContainer/InstructionQueueContainer';
+} from '../InstructionQueue/InstructionQueue';
 import { SBrickCommand } from '../../models/SBrickCommand';
 import { AsyncFunction, series } from 'async';
 import { insert, remove, reorder } from '../../commons/ListUtils';
 import { drive } from '../../services/SBrickService/SBrickService';
-import InstructionWidget from '../InstructionWidget/InstructionWidget';
-import InstructionSourceWidget from '../InstructionSourceWidget/InstructionSourceWidget';
+// import InstructionSourceWidget from '../InstructionSourceWidget/InstructionSourceWidget';
+import './DriveByReact.css';
+import { TemplateInstructionCard } from '../TemplateInstructionCard/TemplateInstructionCard';
+import { PendingInstructionCard } from '../PendingInstructionCard/PendingInstructionCard';
 
 interface DriveByReactProps {
   onInstructionsExecuted?: (result: any) => void;
@@ -131,10 +133,11 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
     });
   }
 
+  // <InstructionSourceWidget key={index} index={index} instruction={instructionSource}/>
   buildInstructionSourceContent = () => {
     return this.state.instructionSource.map((instructionSource, index) => {
       return (
-        <InstructionSourceWidget key={index} index={index} instruction={instructionSource}/>
+        <TemplateInstructionCard key={index} index={index} instruction={instructionSource}/>
       );
     });
   }
@@ -142,7 +145,7 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
   buildInstructionDroppables = () => {
     return this.state.instructionQueue.map((instruction, index) => {
       return (
-        <InstructionWidget key={index} index={index} instruction={instruction}/>
+        <PendingInstructionCard key={index} index={index} instruction={instruction}/>
       );
     });
   }
@@ -189,13 +192,17 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
         onDragUpdate={this.onDragUpdate}
         onDragEnd={this.onDragEnd}
       >
-        <div className="app-container">
-          <InstructionSourceContainer>
-            {this.buildInstructionSourceContent()}
-          </InstructionSourceContainer>
-          <InstructionQueueContainer instructions={this.state.instructionQueue}>
-            {this.buildInstructionDroppables()}
-          </InstructionQueueContainer>
+        <div className="driveByReact-container">
+          <div className="col-sm-4">
+            <InstructionSource>
+              {this.buildInstructionSourceContent()}
+            </InstructionSource>
+          </div>
+          <div className="col-sm-8">
+            <InstructionQueueContainer instructions={this.state.instructionQueue}>
+              {this.buildInstructionDroppables()}
+            </InstructionQueueContainer>
+          </div>
         </div>
         <div>{this.state.status}</div>
         <button className="play-btn" onClick={this.playInstructionsInQueue}>Play</button>

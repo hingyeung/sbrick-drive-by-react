@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './InstructionQueueContainer.css';
+import './InstructionQueue.css';
 import { Droppable, DroppableProvided } from 'react-beautiful-dnd';
 import { Instruction } from '../../models/Instruction';
 
@@ -8,12 +8,12 @@ interface InstructionQueueContainerProps {
   children: any;
 }
 
-export const DROPPABLE_ID = 'instruction-queue-container-droppable';
+export const DROPPABLE_ID = 'instruction-queue-droppable';
 
 export default (props: InstructionQueueContainerProps) => (
   <Droppable droppableId={DROPPABLE_ID}>
     {(provided: DroppableProvided, snapshot) => (
-      <div ref={provided.innerRef} {...provided.droppableProps} className="instruction-queue-container">
+      <div ref={provided.innerRef} {...provided.droppableProps} className="instruction-queue">
         {props.children}
         {provided.placeholder}
       </div>

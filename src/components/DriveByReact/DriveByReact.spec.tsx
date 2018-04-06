@@ -4,10 +4,10 @@ import { DraggableId, DraggableLocation, DropResult } from 'react-beautiful-dnd'
 import { mount, shallow } from 'enzyme';
 import {
   DROPPABLE_ID as InstructionQueueDroppableId
-} from '../InstructionQueueContainer/InstructionQueueContainer';
+} from '../InstructionQueue/InstructionQueue';
 import {
   DROPPABLE_ID as InstructionSourceDroppableId
-} from '../InstructionSourceContainer/InstructionSourceContainer';
+} from '../InstructionSource/InstructionSource';
 import { drive } from '../../services/SBrickService/SBrickService';
 
 jest.mock('../../services/SBrickService/SBrickService', () => ({

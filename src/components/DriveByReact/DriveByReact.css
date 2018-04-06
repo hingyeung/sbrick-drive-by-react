@@ -1,11 +1,16 @@
-.draggable-item {
-    background-color: grey;
-    userSelect: 'none';
-    padding: 16px; /* 8 * 2 */
-    margin: 0 0 8px 0;
+.driveByReact-container {
+    display: flex;
+    flex-direction: row;
 }
 
-.draggable-item.dragging {
-    border: red solid 1px;
-    background-color: lightgreen;
-}
+/*.draggable-item {*/
+    /*background-color: grey;*/
+    /*userSelect: 'none';*/
+    /*padding: 16px; !* 8 * 2 *!*/
+    /*margin: 0 0 8px 0;*/
+/*}*/
+
+/*.draggable-item.dragging {*/
+    /*border: red solid 1px;*/
+    /*background-color: lightgreen;*/
+/*}*/
