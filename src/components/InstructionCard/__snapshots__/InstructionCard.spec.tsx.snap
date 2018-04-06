@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InstructionCard should render properly 1`] = `
+<div>
+  <div
+    className="undefined instruction-card"
+  >
+    <div
+      className="instruction-card"
+      style={Object {}}
+    >
+      displayName
+    </div>
+  </div>
+</div>
+`;
