@@ -1,8 +1,8 @@
-.instruction-source {
+.template-instruction-list {
     padding: 4px;
-    background-color: lightgrey;
+    border: solid 2px cornflowerblue;
 }
 
-.instruction-source--dragging-over {
+.template-instruction-list--dragging-over {
     background-color: lightblue;
 }

@@ -1,4 +1,3 @@
-.instruction-queue {
-    height: 500px;
-    border: red solid 1px;
+.pending-instruction-queue {
+    border: lightpink solid 2px;
 }

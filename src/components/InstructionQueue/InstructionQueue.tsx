@@ -1,22 +1,15 @@
 import * as React from 'react';
 import './InstructionQueue.css';
-import { Droppable, DroppableProvided } from 'react-beautiful-dnd';
-import { Instruction } from '../../models/Instruction';
+import InstructionList from '../InstructionList/InstructionList';
 
-interface InstructionQueueContainerProps {
-  instructions: Instruction[];
+export const DROPPABLE_ID = 'pending-instruction-queue-droppable';
+
+interface Props {
   children: any;
 }
 
-export const DROPPABLE_ID = 'instruction-queue-droppable';
-
-export default (props: InstructionQueueContainerProps) => (
-  <Droppable droppableId={DROPPABLE_ID}>
-    {(provided: DroppableProvided, snapshot) => (
-      <div ref={provided.innerRef} {...provided.droppableProps} className="instruction-queue">
-        {props.children}
-        {provided.placeholder}
-      </div>
-    )}
-  </Droppable>
+export default (props: Props) => (
+  <InstructionList droppabledId={DROPPABLE_ID} {...props} className="pending-instruction-queue">
+    {props.children}
+  </InstructionList>
 );

@@ -200,7 +200,7 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
             <button className="play-btn" onClick={this.playInstructionsInQueue}>Play</button>
           </div>
           <div className="col-sm-8">
-            <InstructionQueueContainer instructions={this.state.instructionQueue}>
+            <InstructionQueueContainer>
               {this.buildInstructionDroppables()}
             </InstructionQueueContainer>
           </div>
