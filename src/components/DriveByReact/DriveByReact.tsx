@@ -187,26 +187,68 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
 
   render() {
     return (
-      <DragDropContext
-        onDragStart={this.onDragStart}
-        onDragUpdate={this.onDragUpdate}
-        onDragEnd={this.onDragEnd}
-      >
-        <div className="driveByReact-container">
-          <div className="col-sm-4">
-            <InstructionSource>
-              {this.buildInstructionSourceContent()}
-            </InstructionSource>
-            <button className="play-btn" onClick={this.playInstructionsInQueue}>Play</button>
+      <div>
+        <DragDropContext
+          onDragStart={this.onDragStart}
+          onDragUpdate={this.onDragUpdate}
+          onDragEnd={this.onDragEnd}
+        >
+          <div className="driveByReact-container container">
+            <div className="row">
+              <div className="col-sm-4 left-container">
+                <div className="row">
+                  <label>Available Instructions</label>
+                </div>
+                <div className="row template-instruction-list-container">
+                  <InstructionSource>
+                    {this.buildInstructionSourceContent()}
+                  </InstructionSource>
+                </div>
+                <div className="row control-container">
+                  <button
+                    className="control-container__play-btn btn"
+                    onClick={this.playInstructionsInQueue}
+                  >
+                    Play
+                  </button>
+                </div>
+              </div>
+              <div className="middle-container col-sm-2">
+                <div className="middle-container__hint-content">drag -></div>
+              </div>
+              <div className="col-sm-6 right-container">
+                <div className="row">
+                  <label>Queued Instructions</label>
+                </div>
+                <div className="row">
+                  <div className="col-sm-12">
+                    <InstructionQueueContainer>
+                      {this.buildInstructionDroppables()}
+                    </InstructionQueueContainer>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="col-sm-8">
-            <InstructionQueueContainer>
-              {this.buildInstructionDroppables()}
-            </InstructionQueueContainer>
-          </div>
-        </div>
-        <div>{this.state.status}</div>
-      </DragDropContext>
+          <div>{this.state.status}</div>
+        </DragDropContext>
+        <footer>
+          <div>Icons made by <a
+            href="https://www.flaticon.com/authors/dave-gandy"
+            title="Dave Gandy"
+          >Dave Gandy
+          </a> from <a
+            href="https://www.flaticon.com/"
+            title="Flaticon"
+          >www.flaticon.com
+          </a> is licensed by <a
+            href="http://creativecommons.org/licenses/by/3.0/"
+            title="Creative Commons BY 3.0"
+            target="_blank"
+          >CC 3.0 BY
+          </a></div>
+        </footer>
+      </div>
     );
   }
 }

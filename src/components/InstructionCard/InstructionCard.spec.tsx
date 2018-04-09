@@ -37,7 +37,7 @@ describe('InstructionCard', function () {
   it('should render properly', () => {
     const tree = renderer
       .create(
-        <InstructionCard index={0} instruction={INSTRUCTION}/>
+        <InstructionCard index={0} instruction={INSTRUCTION} icon="icon"/>
       )
       .toJSON();
 

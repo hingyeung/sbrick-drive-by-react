@@ -1,6 +1,19 @@
 .instruction-card {
-    margin: 8px;
-    text-align: center;
+    /* need this bottom margin to maintain gap between cards that are not being dragged */
+    margin: 0 0 8px 0;
+    text-align: left;
     padding: 8px;
-    font-size: larger;
+    font-size: 1.5rem;
+    border: darkgray 1px solid;
+}
+
+.instruction-card .instruction-card__icon {
+    width: 45px;
+    height: 45px;
+    margin-left: 50px;
+}
+
+.instruction-card .instruction-card__label {
+    margin-left: 50px;
+    text-transform: uppercase;
 }

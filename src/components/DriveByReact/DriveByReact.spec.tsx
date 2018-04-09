@@ -130,6 +130,6 @@ describe('App', function () {
 
     const wrapper = shallow(<DriveByReact onInstructionsExecuted={onInstructionExecuted}/>);
     wrapper.setState(state);
-    wrapper.find('.play-btn').simulate('click');
+    wrapper.find('.control-container__play-btn').simulate('click');
   });
 });

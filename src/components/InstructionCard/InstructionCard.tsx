@@ -7,6 +7,7 @@ export interface Props {
   instruction: Instruction;
   index: number;
   className?: string;
+  icon?: any;
 }
 
 export default (props: Props) => (
@@ -15,11 +16,15 @@ export default (props: Props) => (
       <div>
         <div
           ref={provided.innerRef}
-          className={props.className + ' instruction-card'}
+          className={[
+            (props.className ? props.className : ''),
+            'instruction-card'
+          ].join(' ')}
           style={{...provided.draggableProps.style as object}}
           {...provided.dragHandleProps}
         >
-          {props.instruction.displayName}
+          <img className="instruction-card__icon" src={props.icon} />
+          <span className="instruction-card__label">{props.instruction.displayName}</span>
         </div>
         {provided.placeholder}
       </div>

@@ -2,14 +2,20 @@
 
 exports[`InstructionCard should render properly 1`] = `
 <div>
-  <div
-    className="undefined instruction-card"
-  >
+  <div>
     <div
-      className="instruction-card"
+      className=" instruction-card"
       style={Object {}}
     >
-      displayName
+      <img
+        className="instruction-card__icon"
+        src="icon"
+      />
+      <span
+        className="instruction-card__label"
+      >
+        displayName
+      </span>
     </div>
   </div>
 </div>

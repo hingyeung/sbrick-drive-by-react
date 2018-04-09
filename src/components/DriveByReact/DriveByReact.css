@@ -1,7 +1,31 @@
 .driveByReact-container {
-    display: flex;
-    flex-direction: row;
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    height: 500px;
 }
+
+.middle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.template-instruction-list-container {
+    border-bottom: solid 1px darkgray;
+    /* 30 - 8 */
+    padding-bottom: 22px;
+}
+
+.control-container {
+    padding: 30px 8px 8px 8px;
+}
+
+.btn {
+    width: 80%;
+    margin-left: 10%;
+}
+
+
 
 /*.draggable-item {*/
     /*background-color: grey;*/

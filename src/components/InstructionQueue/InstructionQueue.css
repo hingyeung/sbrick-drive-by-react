@@ -1,3 +1,5 @@
 .pending-instruction-queue {
-    border: lightpink solid 2px;
+    border: darkgray solid 2px;
+    height: 400px;
+    padding: 4px;
 }
