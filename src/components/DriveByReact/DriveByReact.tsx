@@ -2,12 +2,12 @@ import * as React from 'react';
 import { Component } from 'react';
 import { DragDropContext, DragStart, DropResult } from 'react-beautiful-dnd';
 import { Instruction } from '../../models/Instruction';
-import InstructionSource, {
+import TemplateInstructionList, {
   DROPPABLE_ID as InstructionSourceContainerDroppableId
 } from '../InstructionSource/InstructionSource';
-import InstructionQueueContainer, {
+import PendingInstructionQueue, {
   DROPPABLE_ID as InstructionQueueContainerDroppableId
-} from '../InstructionQueue/InstructionQueue';
+} from '../PendingInstructionQueue/PendingInstructionQueue';
 import { SBrickCommand } from '../../models/SBrickCommand';
 import { AsyncFunction, series } from 'async';
 import { insert, remove, reorder } from '../../commons/ListUtils';
@@ -133,7 +133,6 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
     });
   }
 
-  // <InstructionSourceWidget key={index} index={index} instruction={instructionSource}/>
   buildInstructionSourceContent = () => {
     return this.state.instructionSource.map((instructionSource, index) => {
       return (
@@ -200,9 +199,9 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
                   <label>Available Instructions</label>
                 </div>
                 <div className="row template-instruction-list-container">
-                  <InstructionSource>
+                  <TemplateInstructionList>
                     {this.buildInstructionSourceContent()}
-                  </InstructionSource>
+                  </TemplateInstructionList>
                 </div>
                 <div className="row control-container">
                   <button
@@ -220,12 +219,10 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
                 <div className="row">
                   <label>Queued Instructions</label>
                 </div>
-                <div className="row">
-                  <div className="col-sm-12">
-                    <InstructionQueueContainer>
+                <div className="row pending-instruction-queue-container">
+                    <PendingInstructionQueue>
                       {this.buildInstructionDroppables()}
-                    </InstructionQueueContainer>
-                  </div>
+                    </PendingInstructionQueue>
                 </div>
               </div>
             </div>

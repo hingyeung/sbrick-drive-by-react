@@ -1,6 +1,6 @@
 import { Droppable, DroppableProvided } from 'react-beautiful-dnd';
 import * as React from 'react';
-import './InstructionList.css';
+import './TemplateInstructionList.css';
 
 export interface Props {
   droppabledId: string;

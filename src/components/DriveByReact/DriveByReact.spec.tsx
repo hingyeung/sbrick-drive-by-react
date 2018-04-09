@@ -4,7 +4,7 @@ import { DraggableId, DraggableLocation, DropResult } from 'react-beautiful-dnd'
 import { mount, shallow } from 'enzyme';
 import {
   DROPPABLE_ID as InstructionQueueDroppableId
-} from '../InstructionQueue/InstructionQueue';
+} from '../PendingInstructionQueue/PendingInstructionQueue';
 import {
   DROPPABLE_ID as InstructionSourceDroppableId
 } from '../InstructionSource/InstructionSource';

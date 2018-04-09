@@ -1,6 +1,6 @@
 import * as React from 'react';
-import './InstructionQueue.css';
-import InstructionList from '../InstructionList/InstructionList';
+import './PendingInstructionQueue.css';
+import InstructionList from '../TemplateInstructionList/TemplateInstructionList';
 
 export const DROPPABLE_ID = 'pending-instruction-queue-droppable';
 

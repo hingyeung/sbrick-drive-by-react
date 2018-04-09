@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './InstructionSource.css';
-import InstructionList from '../InstructionList/InstructionList';
+import InstructionList from '../TemplateInstructionList/TemplateInstructionList';
 
 export const DROPPABLE_ID = 'template-instruction-list-droppable';
 
