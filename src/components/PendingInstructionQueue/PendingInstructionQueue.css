@@ -5,7 +5,7 @@
 }
 
 .pending-instruction-queue--dragging-over {
-    background-color: palegreen;
+    background-color: rgba(81, 203, 238, 1);
 }
 
 .pending-instruction-queue--drag-in-progress {
