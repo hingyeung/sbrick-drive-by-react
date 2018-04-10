@@ -2,6 +2,7 @@
     border: darkgray solid 1px;
     height: 400px;
     padding: 4px;
+    overflow: scroll;
 }
 
 .pending-instruction-queue--dragging-over {
