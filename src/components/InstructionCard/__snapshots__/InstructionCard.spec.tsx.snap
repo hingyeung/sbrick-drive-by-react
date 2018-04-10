@@ -1,22 +1,79 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InstructionCard should render properly 1`] = `
-<div>
-  <div>
-    <div
-      className=" instruction-card"
-      style={Object {}}
-    >
-      <img
-        className="instruction-card__icon"
-        src="icon"
-      />
-      <span
-        className="instruction-card__label"
-      >
-        displayName
-      </span>
+<Component
+  className="extraClass"
+  icon="icon"
+  index={0}
+  instruction={
+    Object {
+      "displayName": "displayName",
+      "id": "instructionId",
+      "sBrickCommand": 0,
+    }
+  }
+>
+  <Component
+    draggableId="instructionId"
+    index={0}
+  >
+    <div>
+      <div>
+        <div
+          className="instruction-card  extraClass"
+          style={Object {}}
+        >
+          <img
+            className="instruction-card__icon"
+            src="icon"
+          />
+          <span
+            className="instruction-card__label"
+          >
+            displayName
+          </span>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  </Component>
+</Component>
+`;
+
+exports[`InstructionCard should render properly when dragging 1`] = `
+<Component
+  className="extraClass"
+  icon="icon"
+  index={0}
+  instruction={
+    Object {
+      "displayName": "displayName",
+      "id": "instructionId",
+      "sBrickCommand": 0,
+    }
+  }
+>
+  <Component
+    draggableId="instructionId"
+    index={0}
+  >
+    <div>
+      <div>
+        <div
+          className="instruction-card instruction-card--is-dragging extraClass extraClass--is-dragging"
+          style={Object {}}
+        >
+          <img
+            className="instruction-card__icon"
+            src="icon"
+          />
+          <span
+            className="instruction-card__label"
+          >
+            displayName
+          </span>
+        </div>
+      </div>
+    </div>
+  </Component>
+</Component>
 `;

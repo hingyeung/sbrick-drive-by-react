@@ -7,6 +7,10 @@
     border: darkgray 1px solid;
 }
 
+.instruction-card--is-dragging {
+    box-shadow: 0 0 20px rgba(180, 180, 180, 1);
+}
+
 .instruction-card .instruction-card__icon {
     width: 45px;
     height: 45px;

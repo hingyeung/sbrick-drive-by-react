@@ -10,16 +10,22 @@ export interface Props {
   icon?: any;
 }
 
+const buildClasses = (className: string | undefined, isDragging: boolean) => {
+  return [
+    'instruction-card',
+    isDragging ? 'instruction-card--is-dragging' : '',
+    className ? className : '',
+    className && isDragging ? `${className}--is-dragging` : '',
+  ].join(' ').trim();
+};
+
 export default (props: Props) => (
   <Draggable draggableId={props.instruction.id} index={props.index}>
     {(provided, snapshot) => (
       <div>
         <div
           ref={provided.innerRef}
-          className={[
-            (props.className ? props.className : ''),
-            'instruction-card'
-          ].join(' ')}
+          className={buildClasses(props.className, snapshot.isDragging)}
           style={{...provided.draggableProps.style as object}}
           {...provided.dragHandleProps}
         >

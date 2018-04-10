@@ -15,6 +15,8 @@ import { drive } from '../../services/SBrickService/SBrickService';
 import './DriveByReact.css';
 import { TemplateInstructionCard } from '../TemplateInstructionCard/TemplateInstructionCard';
 import { PendingInstructionCard } from '../PendingInstructionCard/PendingInstructionCard';
+// @ts-ignore
+import dragIcon from '../../assets/drag.svg';
 
 interface DriveByReactProps {
   onInstructionsExecuted?: (result: any) => void;
@@ -223,7 +225,9 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
                 </div>
               </div>
               <div className="middle-container col-sm-2">
-                <div className="middle-container__hint-content">drag -></div>
+                <div className="middle-container__hint-content">
+                  <img className="middle-container__icon" src={dragIcon} />
+                </div>
               </div>
               <div className="col-sm-6 right-container">
                 <div className="row">
