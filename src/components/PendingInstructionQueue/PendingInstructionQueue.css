@@ -1,5 +1,14 @@
 .pending-instruction-queue {
-    border: darkgray solid 2px;
+    border: darkgray solid 1px;
     height: 400px;
     padding: 4px;
+}
+
+.pending-instruction-queue--dragging-over {
+    background-color: palegreen;
+}
+
+.pending-instruction-queue--drag-in-progress {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
 }

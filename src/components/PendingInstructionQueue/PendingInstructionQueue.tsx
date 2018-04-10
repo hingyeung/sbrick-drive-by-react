@@ -1,10 +1,11 @@
 import * as React from 'react';
 import './PendingInstructionQueue.css';
-import InstructionList from '../TemplateInstructionList/TemplateInstructionList';
+import InstructionList from '../InstructionList/InstructionList';
 
 export const DROPPABLE_ID = 'pending-instruction-queue-droppable';
 
 interface Props {
+  decorateForDragInProgress: boolean;
   children: any;
 }
 

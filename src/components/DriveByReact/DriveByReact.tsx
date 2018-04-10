@@ -4,7 +4,7 @@ import { DragDropContext, DragStart, DropResult } from 'react-beautiful-dnd';
 import { Instruction } from '../../models/Instruction';
 import TemplateInstructionList, {
   DROPPABLE_ID as InstructionSourceContainerDroppableId
-} from '../InstructionSource/InstructionSource';
+} from '../TemplateInstructionList/TemplateInstructionList';
 import PendingInstructionQueue, {
   DROPPABLE_ID as InstructionQueueContainerDroppableId
 } from '../PendingInstructionQueue/PendingInstructionQueue';
@@ -12,7 +12,6 @@ import { SBrickCommand } from '../../models/SBrickCommand';
 import { AsyncFunction, series } from 'async';
 import { insert, remove, reorder } from '../../commons/ListUtils';
 import { drive } from '../../services/SBrickService/SBrickService';
-// import InstructionSourceWidget from '../InstructionSourceWidget/InstructionSourceWidget';
 import './DriveByReact.css';
 import { TemplateInstructionCard } from '../TemplateInstructionCard/TemplateInstructionCard';
 import { PendingInstructionCard } from '../PendingInstructionCard/PendingInstructionCard';
@@ -24,6 +23,7 @@ interface DriveByReactProps {
 export interface State {
   instructionSource: Instruction[];
   instructionQueue: Instruction[];
+  dragInProgress: boolean;
   status?: string;
 }
 
@@ -52,14 +52,16 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
     this.state = {
       instructionSource: getInstructionSource(),
       instructionQueue: [],
+      dragInProgress: false,
       status: 'unknown'
     };
     this.playInstructionsInQueue = this.playInstructionsInQueue.bind(this);
   }
 
   onDragStart = (start: DragStart) => {
-    //
+    this.setDragInProgress(true);
   }
+
   onDragUpdate = () => {
     //
   }
@@ -85,6 +87,14 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
       InstructionQueueContainerDroppableId)) {
       this.removeInstructionFromIntructionQueue(result);
     }
+
+    this.setDragInProgress(false);
+  }
+
+  setDragInProgress(inProgress: boolean) {
+    this.setState({
+      dragInProgress: inProgress
+    });
   }
 
   reorderInstructionsWithinInstructionQueue(result: DropResult) {
@@ -199,7 +209,7 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
                   <label>Available Instructions</label>
                 </div>
                 <div className="row template-instruction-list-container">
-                  <TemplateInstructionList>
+                  <TemplateInstructionList decorateForDragInProgress={this.state.dragInProgress}>
                     {this.buildInstructionSourceContent()}
                   </TemplateInstructionList>
                 </div>
@@ -220,7 +230,7 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
                   <label>Queued Instructions</label>
                 </div>
                 <div className="row pending-instruction-queue-container">
-                    <PendingInstructionQueue>
+                    <PendingInstructionQueue decorateForDragInProgress={this.state.dragInProgress}>
                       {this.buildInstructionDroppables()}
                     </PendingInstructionQueue>
                 </div>

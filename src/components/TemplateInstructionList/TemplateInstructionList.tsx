@@ -1,29 +1,16 @@
-import { Droppable, DroppableProvided } from 'react-beautiful-dnd';
 import * as React from 'react';
 import './TemplateInstructionList.css';
+import InstructionList from '../InstructionList/InstructionList';
 
-export interface Props {
-  droppabledId: string;
-  // instructions: Instruction[];
-  className?: string;
+export const DROPPABLE_ID = 'template-instruction-list-droppable';
+
+interface Props {
+  decorateForDragInProgress: boolean;
   children: any;
 }
 
 export default (props: Props) => (
-  <Droppable droppableId={props.droppabledId}>
-    {(provided: DroppableProvided, snapshot) => (
-      <div
-        ref={provided.innerRef}
-        {...provided.droppableProps}
-        className={
-          props.className +
-          ' instruction-list ' +
-          (snapshot.isDraggingOver ? ` instruction-list--dragging-over ${props.className}--dragging-over` : '')
-        }
-      >
-        {props.children}
-        {provided.placeholder}
-      </div>
-    )}
-  </Droppable>
+  <InstructionList droppabledId={DROPPABLE_ID} {...props} className="template-instruction-list">
+    {props.children}
+  </InstructionList>
 );

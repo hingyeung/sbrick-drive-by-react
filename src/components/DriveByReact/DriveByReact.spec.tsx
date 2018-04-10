@@ -7,7 +7,7 @@ import {
 } from '../PendingInstructionQueue/PendingInstructionQueue';
 import {
   DROPPABLE_ID as InstructionSourceDroppableId
-} from '../InstructionSource/InstructionSource';
+} from '../TemplateInstructionList/TemplateInstructionList';
 import { drive } from '../../services/SBrickService/SBrickService';
 
 jest.mock('../../services/SBrickService/SBrickService', () => ({
@@ -42,7 +42,8 @@ describe('App', function () {
   it('should add instruction to InstructionQueue when InstructionQueus is empty', () => {
     const state: State = {
       instructionSource: makeInstructions(2),
-      instructionQueue: []
+      instructionQueue: [],
+      dragInProgress: false
     };
     const result: DropResult = buildDropResultFor(
       'instruction-0',
@@ -68,7 +69,8 @@ describe('App', function () {
   it('should reorder instructions in InstructionQueue', () => {
     const state: State = {
       instructionSource: [],
-      instructionQueue: makeInstructions(2)
+      instructionQueue: makeInstructions(2),
+      dragInProgress: false
     };
     const result: DropResult = buildDropResultFor(
       'instruction-0',
@@ -95,7 +97,8 @@ describe('App', function () {
   it('should remove instruction from InstructionQueue', () => {
     const state: State = {
       instructionSource: [],
-      instructionQueue: makeInstructions(2)
+      instructionQueue: makeInstructions(2),
+      dragInProgress: false
     };
     const result: DropResult = buildDropResultFor(
       'instruction-0',
@@ -118,7 +121,8 @@ describe('App', function () {
   it('should send instructions to backend in the correct order', (done) => {
     const state: State = {
       instructionSource: [],
-      instructionQueue: makeInstructions(3)
+      instructionQueue: makeInstructions(3),
+      dragInProgress: false
     };
 
     const onInstructionExecuted = (result: any) => {
