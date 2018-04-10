@@ -207,9 +207,6 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
           <div className="driveByReact-container container">
             <div className="row">
               <div className="col-sm-4 left-container">
-                <div className="row">
-                  <label>Available Instructions</label>
-                </div>
                 <div className="row template-instruction-list-container">
                   <TemplateInstructionList decorateForDragInProgress={this.state.dragInProgress}>
                     {this.buildInstructionSourceContent()}
@@ -230,9 +227,6 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
                 </div>
               </div>
               <div className="col-sm-6 right-container">
-                <div className="row">
-                  <label>Queued Instructions</label>
-                </div>
                 <div className="row pending-instruction-queue-container">
                     <PendingInstructionQueue decorateForDragInProgress={this.state.dragInProgress}>
                       {this.buildInstructionDroppables()}

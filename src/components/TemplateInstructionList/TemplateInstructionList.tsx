@@ -10,7 +10,12 @@ interface Props {
 }
 
 export default (props: Props) => (
-  <InstructionList droppabledId={DROPPABLE_ID} {...props} className="template-instruction-list">
+  <InstructionList
+    droppabledId={DROPPABLE_ID}
+    {...props}
+    className="template-instruction-list"
+    title="Available Instruction"
+  >
     {props.children}
   </InstructionList>
 );
