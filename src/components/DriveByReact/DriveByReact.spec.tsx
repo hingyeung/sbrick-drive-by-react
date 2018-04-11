@@ -1,7 +1,7 @@
 import * as React from 'react';
 import DriveByReact, { State } from './DriveByReact';
 import { DraggableId, DraggableLocation, DropResult } from 'react-beautiful-dnd';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import {
   DROPPABLE_ID as InstructionQueueDroppableId
 } from '../PendingInstructionQueue/PendingInstructionQueue';
@@ -132,8 +132,26 @@ describe('App', function () {
       done();
     };
 
-    const wrapper = shallow(<DriveByReact onInstructionsExecuted={onInstructionExecuted}/>);
+    const wrapper = mount(<DriveByReact onInstructionsExecuted={onInstructionExecuted}/>);
     wrapper.setState(state);
     wrapper.find('.control-container__play-btn').simulate('click');
+  });
+
+  it('should clear instructions in queue', (done) => {
+    const state: State = {
+      instructionSource: [],
+      instructionQueue: [],
+      dragInProgress: false
+    };
+    let wrapper: any;
+
+    const onInstructionsCleared = () => {
+      expect(wrapper.state('instructionQueue')).toEqual([]);
+      done();
+    };
+
+    wrapper = mount(<DriveByReact onInstructionsCleared={onInstructionsCleared}/>);
+    wrapper.setState(state);
+    wrapper.find('.control-container__clear-btn').simulate('click');
   });
 });

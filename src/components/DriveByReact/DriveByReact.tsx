@@ -17,9 +17,12 @@ import { TemplateInstructionCard } from '../TemplateInstructionCard/TemplateInst
 import { PendingInstructionCard } from '../PendingInstructionCard/PendingInstructionCard';
 // @ts-ignore
 import dragIcon from '../../assets/drag.svg';
+import Footer from '../Footer/Footer';
+import ControlPanel from '../ControlPanel/ControlPanel';
 
 interface DriveByReactProps {
   onInstructionsExecuted?: (result: any) => void;
+  onInstructionsCleared?: () => void;
 }
 
 export interface State {
@@ -29,13 +32,6 @@ export interface State {
   status?: string;
 }
 
-// const grid = 8;
-
-// const getListStyle = (isDraggingOver: boolean): object => ({
-//     background: isDraggingOver ? 'lightblue' : 'lightgrey',
-//     padding: grid,
-//     width: 250
-// });
 const getInstructionSource = (): Instruction[] =>
   Array.from(
     [
@@ -58,6 +54,7 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
       status: 'unknown'
     };
     this.playInstructionsInQueue = this.playInstructionsInQueue.bind(this);
+    this.clearInstructionsInQueue = this.clearInstructionsInQueue.bind(this);
   }
 
   onDragStart = (start: DragStart) => {
@@ -182,19 +179,14 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
     series(executionQueue, this.props.onInstructionsExecuted);
   }
 
-  // const getItemStyle = (draggableStyle: any, isDragging: boolean): Object => ({
-  //     // some basic styles to make the items look a bit nicer
-  //     // userSelect: 'none',
-  //     // padding: grid * 2,
-  //
-  //     // change background colour if dragging
-  //     // background: isDragging ? 'lightgreen' : 'grey',
-  //
-  //     // styles we need to apply on draggables
-  //     ...draggableStyle,
-  //
-  //     // margin: draggableStyle && draggableStyle.margin ? draggableStyle.margin : `0 0 ${grid}px 0`,
-  // });
+  clearInstructionsInQueue = (ev: any) => {
+    this.setState({
+      instructionQueue: []
+    });
+    if (this.props.onInstructionsCleared) {
+      this.props.onInstructionsCleared();
+    }
+  }
 
   render() {
     return (
@@ -213,12 +205,10 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
                   </TemplateInstructionList>
                 </div>
                 <div className="row control-container">
-                  <button
-                    className="control-container__play-btn btn"
-                    onClick={this.playInstructionsInQueue}
-                  >
-                    Play
-                  </button>
+                  <ControlPanel
+                    onClearCLick={this.clearInstructionsInQueue}
+                    onPlayClick={this.playInstructionsInQueue}
+                  />
                 </div>
               </div>
               <div className="middle-container col-sm-2">
@@ -237,22 +227,7 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
           </div>
           <div>{this.state.status}</div>
         </DragDropContext>
-        <footer>
-          <div>Icons made by <a
-            href="https://www.flaticon.com/authors/dave-gandy"
-            title="Dave Gandy"
-          >Dave Gandy
-          </a> from <a
-            href="https://www.flaticon.com/"
-            title="Flaticon"
-          >www.flaticon.com
-          </a> is licensed by <a
-            href="http://creativecommons.org/licenses/by/3.0/"
-            title="Creative Commons BY 3.0"
-            target="_blank"
-          >CC 3.0 BY
-          </a></div>
-        </footer>
+        <Footer/>
       </div>
     );
   }
