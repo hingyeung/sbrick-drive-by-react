@@ -1,7 +1,3 @@
-.instruction-list {
-    height: 100%;
+.instruction-list__list {
     width: 100%;
-}
-
-.instruction-list--dragging-over {
 }

@@ -1,15 +1,15 @@
-.pending-instruction-queue {
+.pending-instruction-queue__list {
     border: darkgray solid 1px;
     height: 400px;
     padding: 4px;
     overflow: auto;
 }
 
-.pending-instruction-queue--dragging-over {
+.pending-instruction-queue__list--dragging-over {
     background-color: rgba(81, 203, 238, 1);
 }
 
-.pending-instruction-queue--drag-in-progress {
+.pending-instruction-queue__list--drag-in-progress {
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
     border: 1px solid rgba(81, 203, 238, 1);
 }

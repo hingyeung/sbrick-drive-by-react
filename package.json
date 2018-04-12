@@ -7,6 +7,7 @@
     "async-es": "^2.6.0",
     "axios": "^0.18.0",
     "bootstrap": "^4.0.0",
+    "classnames": "^2.2.5",
     "react": "^16.2.0",
     "react-beautiful-dnd": "^6.0.0",
     "react-dom": "^16.2.0",
@@ -21,6 +22,7 @@
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.3",
     "@types/jest": "^22.2.0",
     "@types/react": "^16.0.40",
     "@types/react-beautiful-dnd": "^4.0.1",

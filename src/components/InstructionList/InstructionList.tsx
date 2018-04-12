@@ -1,5 +1,6 @@
 import { Droppable, DroppableProvided } from 'react-beautiful-dnd';
 import * as React from 'react';
+import * as classNames from 'classnames';
 import './InstructionList.css';
 
 export interface Props {
@@ -11,28 +12,46 @@ export interface Props {
 }
 
 export default (props: Props) => (
-  <div className="col-sm-12">
-    <div className="row">{props.title}</div>
-    <div className="row">
-      <Droppable droppableId={props.droppabledId}>
-        {(provided: DroppableProvided, snapshot) => (
+  <Droppable droppableId={props.droppabledId}>
+    {(provided: DroppableProvided, snapshot) => (
+      <div
+        className={
+          classNames(
+            'col-sm-12',
+            props.className,
+            'instruction-list'
+          )}
+      >
+        <div
+          className={
+            classNames(
+            'row',
+            'instruction-list__title',
+            `${props.className}__title`,
+          )}
+        >
+          {props.title}
+        </div>
+        <div className="row">
           <div
             ref={provided.innerRef}
             {...provided.droppableProps}
-            className={[
-              props.className,
-              'instruction-list',
-              (props.decorateForDragInProgress ?
-                `instruction-list--drag-in-progress ${props.className}--drag-in-progress` :
-                ''),
-              (snapshot.isDraggingOver ? ` instruction-list--dragging-over ${props.className}--dragging-over` : '')
-            ].join(' ')}
+            className={
+              classNames(
+                'instruction-list__list',
+                `${props.className}__list`,
+                {
+                  [`${props.className}__list--drag-in-progress`]: props.decorateForDragInProgress,
+                  [`${props.className}__list--dragging-over`]: snapshot.isDraggingOver
+                }
+              )
+            }
           >
             {props.children}
             {provided.placeholder}
           </div>
-        )}
-      </Droppable>
-    </div>
-  </div>
+        </div>
+      </div>
+    )}
+  </Droppable>
 );
