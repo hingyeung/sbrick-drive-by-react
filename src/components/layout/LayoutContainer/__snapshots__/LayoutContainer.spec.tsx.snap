@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LayoutContainer should render extraClassNames in props 1`] = `
+<div
+  className="my-container container"
+>
+  <Component
+    extraClassNames="my-row"
+  >
+    <LayoutCell
+      extraClassNames="my-cell"
+    >
+      hello
+    </LayoutCell>
+  </Component>
+</div>
+`;

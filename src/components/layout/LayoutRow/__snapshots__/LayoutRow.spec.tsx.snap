@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LayoutRow should render extraClassNames in props 1`] = `
+<div
+  className="my-row row"
+>
+  <LayoutCell
+    extraClassNames="my-cell"
+  >
+    Cell
+  </LayoutCell>
+</div>
+`;
