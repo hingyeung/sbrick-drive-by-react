@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 
 export interface Props {
-  extraClassNames: string;
+  extraClassNames?: string;
   sm?: number;
   md?: number;
   lg?: number;
