@@ -17,7 +17,6 @@ import { TemplateInstructionCard } from '../TemplateInstructionCard/TemplateInst
 import { PendingInstructionCard } from '../PendingInstructionCard/PendingInstructionCard';
 // @ts-ignore
 import dragIcon from '../../assets/drag.svg';
-import Footer from '../Footer/Footer';
 import ControlPanel from '../ControlPanel/ControlPanel';
 import LayoutCell from '../layout/LayoutCell/LayoutCell';
 import LayoutRow from '../layout/LayoutRow/LayoutRow';
@@ -200,47 +199,44 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
 
   render() {
     return (
-      <div className={classNames('drive-by-react-container', this.componentContainerClasses())}>
-        <DragDropContext
-          onDragStart={this.onDragStart}
-          onDragUpdate={this.onDragUpdate}
-          onDragEnd={this.onDragEnd}
-        >
-          <LayoutContainer extraClassNames="driveByReact-container">
-            <LayoutRow>
-              <LayoutCell extraClassNames="left-container" sm={4}>
-                <LayoutRow extraClassNames="template-instruction-list-container">
-                  <TemplateInstructionList decorateForDragInProgress={this.state.dragInProgress}>
-                    {this.buildInstructionSourceContent()}
-                  </TemplateInstructionList>
-                </LayoutRow>
-                <LayoutRow extraClassNames="control-container">
-                  <ControlPanel
-                    onClearCLick={this.clearInstructionsInQueue}
-                    onPlayClick={this.playInstructionsInQueue}
-                  />
-                </LayoutRow>
-              </LayoutCell>
-              <LayoutCell extraClassNames="middle-container" sm={2}>
-                <LayoutRow extraClassNames="middle-container__hint-content">
-                  <img className="middle-container__icon" src={dragIcon}/>
-                </LayoutRow>
-              </LayoutCell>
-              <LayoutCell extraClassNames="right-container" sm={6}>
-                <LayoutRow extraClassNames="pending-instruction-queue-container">
-                  <PendingInstructionQueue decorateForDragInProgress={this.state.dragInProgress}>
-                    {this.buildInstructionDroppables()}
-                  </PendingInstructionQueue>
-                </LayoutRow>
-              </LayoutCell>
-            </LayoutRow>
-            <LayoutRow>
-              <div>{this.state.status}</div>
-            </LayoutRow>
-          </LayoutContainer>
-        </DragDropContext>
-        <Footer/>
-      </div>
+      <DragDropContext
+        onDragStart={this.onDragStart}
+        onDragUpdate={this.onDragUpdate}
+        onDragEnd={this.onDragEnd}
+      >
+        <LayoutContainer extraClassNames={classNames('drive-by-react-container', this.componentContainerClasses())}>
+          <LayoutRow>
+            <LayoutCell extraClassNames="left-container" sm={4}>
+              <LayoutRow extraClassNames="template-instruction-list-container">
+                <TemplateInstructionList decorateForDragInProgress={this.state.dragInProgress}>
+                  {this.buildInstructionSourceContent()}
+                </TemplateInstructionList>
+              </LayoutRow>
+              <LayoutRow extraClassNames="control-container">
+                <ControlPanel
+                  onClearCLick={this.clearInstructionsInQueue}
+                  onPlayClick={this.playInstructionsInQueue}
+                />
+              </LayoutRow>
+            </LayoutCell>
+            <LayoutCell extraClassNames="middle-container" sm={2}>
+              <LayoutRow extraClassNames="middle-container__hint-content">
+                <img className="middle-container__icon" src={dragIcon}/>
+              </LayoutRow>
+            </LayoutCell>
+            <LayoutCell extraClassNames="right-container" sm={6}>
+              <LayoutRow extraClassNames="pending-instruction-queue-container">
+                <PendingInstructionQueue decorateForDragInProgress={this.state.dragInProgress}>
+                  {this.buildInstructionDroppables()}
+                </PendingInstructionQueue>
+              </LayoutRow>
+            </LayoutCell>
+          </LayoutRow>
+          <LayoutRow>
+            <div>{this.state.status}</div>
+          </LayoutRow>
+        </LayoutContainer>
+      </DragDropContext>
     );
   }
 }
