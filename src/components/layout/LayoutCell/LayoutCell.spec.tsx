@@ -3,7 +3,14 @@ import { shallow, mount } from 'enzyme';
 import * as React from 'react';
 
 describe('LayoutCell', () => {
+  const hasClassWithPrefix = (wrapper: any, prefix: string) => {
+    expect(
+      wrapper.find('.hello').prop('className').trim().split(/\s+/).filter((thisClass: string) =>
+        thisClass.indexOf(prefix) > -1)
+    ).toEqual([]);
+  };
   const sizes = ['sm', 'md', 'lg', 'xl'];
+
   it('should render extraClassNames in props', () => {
     const wrapper = shallow(<LayoutCell extraClassNames="hello">Hello</LayoutCell>);
 
@@ -36,27 +43,4 @@ describe('LayoutCell', () => {
       })
     )
   );
-
-  // it('should set medium screen column number when md prop is set', () => {
-  //   const wrapper = shallow(
-  //     <LayoutCell extraClassNames="hello" md={6}>Hello</LayoutCell>
-  //   );
-  //
-  //   expect(wrapper.find('.hello').hasClass('col-md-6')).toBeTruthy();
-  // });
-  //
-  // it('should not set medium screen column number when md prop out of range', () => {
-  //   const wrapper = mount(
-  //     <LayoutCell extraClassNames="hello" md={13}>Hello</LayoutCell>
-  //   );
-  //
-  //   hasClassWithPrefix(wrapper, 'col-md-');
-  // });
-
-  const hasClassWithPrefix = (wrapper: any, prefix: string) => {
-    expect(
-      wrapper.find('.hello').prop('className').trim().split(/\s+/).filter((thisClass: string) =>
-        thisClass.indexOf(prefix) > -1)
-    ).toEqual([]);
-  };
 });
