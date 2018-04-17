@@ -14,7 +14,7 @@ export default (props: Props) => (
     droppabledId={DROPPABLE_ID}
     {...props}
     className="template-instruction-list"
-    title="Available Instruction"
+    title="Available Instructions"
   >
     {props.children}
   </InstructionList>

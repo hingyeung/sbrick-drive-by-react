@@ -22,7 +22,7 @@ export default (props: Props) => (
             'instruction-list'
           )}
       >
-        <div
+        <h2
           className={
             classNames(
             'row',
@@ -31,7 +31,7 @@ export default (props: Props) => (
           )}
         >
           {props.title}
-        </div>
+        </h2>
         <div className="row">
           <div
             ref={provided.innerRef}
