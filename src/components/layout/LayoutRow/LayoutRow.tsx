@@ -8,6 +8,7 @@ export interface Props {
 
 export default (props: Props) => {
   return (
+    // add row prop to children, not adding a useless wrapper div.
     <div className={classNames(props.extraClassNames, 'row')}>
       {props.children}
     </div>

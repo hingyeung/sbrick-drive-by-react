@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LayoutCellComponent should add "row" class to specified component 1`] = `
+<div
+  className="extra-class col"
+>
+  hello
+</div>
+`;
+
+exports[`LayoutCellComponent should use componentClass in props as children 1`] = `
+<b
+  className="extra-class col"
+/>
+`;

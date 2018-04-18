@@ -5,8 +5,9 @@ import 'bootstrap/dist/css/bootstrap-grid.css';
 import './App.css';
 import LayoutContainer from './components/layout/LayoutContainer/LayoutContainer';
 import LayoutRow from './components/layout/LayoutRow/LayoutRow';
-import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
+import LayoutCol from './components/layout/LayoutCell/LayoutCol';
+import Footer from './components/Footer/Footer';
 
 export default class App extends React.Component<{}, {}> {
   render() {
@@ -18,9 +19,7 @@ export default class App extends React.Component<{}, {}> {
         <LayoutRow>
           <DriveByReact/>
         </LayoutRow>
-        <LayoutRow>
-          <Footer/>
-        </LayoutRow>
+        <LayoutCol componentClass={Footer}/>
       </LayoutContainer>
     );
   }
