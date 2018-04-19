@@ -12,14 +12,16 @@ import Footer from './components/Footer/Footer';
 export default class App extends React.Component<{}, {}> {
   render() {
     return (
-      <LayoutContainer extraClassNames="app-container">
+      <LayoutContainer className="app-container">
         <LayoutRow>
-          <Header/>
+          <LayoutCol componentClass={Header}/>
         </LayoutRow>
         <LayoutRow>
-          <DriveByReact/>
+          <LayoutCol componentClass={DriveByReact}/>
         </LayoutRow>
-        <LayoutCol componentClass={Footer}/>
+        <LayoutRow>
+          <LayoutCol componentClass={Footer}/>
+        </LayoutRow>
       </LayoutContainer>
     );
   }

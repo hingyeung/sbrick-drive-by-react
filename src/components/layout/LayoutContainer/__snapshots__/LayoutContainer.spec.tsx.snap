@@ -1,17 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LayoutContainer should render extraClassNames in props 1`] = `
+exports[`LayoutContainer should render className in props 1`] = `
 <div
   className="my-container container"
 >
-  <Component
-    extraClassNames="my-row"
+  <LayoutRow
+    className="my-row"
+    componentClass="div"
   >
-    <LayoutCell
-      extraClassNames="my-cell"
+    <LayoutCol
+      className="my-cell"
+      componentClass="div"
     >
       hello
-    </LayoutCell>
-  </Component>
+    </LayoutCol>
+  </LayoutRow>
 </div>
+`;
+
+exports[`LayoutContainer should render using componentClass in props 1`] = `
+<b
+  className="my-container container"
+>
+  <LayoutRow
+    className="my-row"
+    componentClass="div"
+  >
+    <LayoutCol
+      className="my-cell"
+      componentClass="div"
+    >
+      hello
+    </LayoutCol>
+  </LayoutRow>
+</b>
 `;

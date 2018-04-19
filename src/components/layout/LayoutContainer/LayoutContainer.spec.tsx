@@ -2,18 +2,30 @@ import { shallow } from 'enzyme';
 import * as React from 'react';
 import LayoutContainer from './LayoutContainer';
 import LayoutRow from '../LayoutRow/LayoutRow';
-import LayoutCell from '../LayoutCell/LayoutCell';
+import LayoutCol from '../LayoutCell/LayoutCol';
 
 describe('LayoutContainer', () => {
-  it('should render extraClassNames in props', () => {
+  it('should render className in props', () => {
     const wrapper = shallow(
-      <LayoutContainer extraClassNames="my-container">
-        <LayoutRow extraClassNames="my-row">
-          <LayoutCell extraClassNames="my-cell">hello</LayoutCell>
+      <LayoutContainer className="my-container">
+        <LayoutRow className="my-row">
+          <LayoutCol className="my-cell">hello</LayoutCol>
         </LayoutRow>
       </LayoutContainer>);
 
     expect(wrapper.find('.my-container')).toHaveLength(1);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should render using componentClass in props', () => {
+    const wrapper = shallow(
+      <LayoutContainer className="my-container" componentClass={'b'}>
+        <LayoutRow className="my-row">
+          <LayoutCol className="my-cell">hello</LayoutCol>
+        </LayoutRow>
+      </LayoutContainer>);
+
+    expect(wrapper.find('b.my-container')).toHaveLength(1);
     expect(wrapper).toMatchSnapshot();
   });
 });

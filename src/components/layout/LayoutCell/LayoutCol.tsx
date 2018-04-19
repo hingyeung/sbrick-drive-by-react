@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import { StatelessComponent } from 'react';
 
 interface LayoutCellComponentProps {
   className?: string;
@@ -11,11 +10,11 @@ interface LayoutCellComponentProps {
   xl?: number;
 }
 
-const isValidBootstrapColumnValue = function(value: number) {
+const isValidBootstrapColumnValue = function (value: number) {
   return value >= 1 && value <= 12;
 };
 
-const buildBootstrapGridColumnClasses = function(props: any): any {
+const buildBootstrapGridColumnClasses = function (props: any): any {
   return {
     [`col-sm-${props.sm}`]: props.sm && isValidBootstrapColumnValue(props.sm),
     [`col-md-${props.md}`]: props.md && isValidBootstrapColumnValue(props.md),
@@ -24,7 +23,7 @@ const buildBootstrapGridColumnClasses = function(props: any): any {
   };
 };
 
-const LayoutCol: StatelessComponent<LayoutCellComponentProps> = (props) => {
+const LayoutCol: React.SFC<LayoutCellComponentProps> = (props) => {
   const {
     componentClass: Component,
     className,

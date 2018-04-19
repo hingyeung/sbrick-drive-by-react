@@ -1,16 +1,25 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
-export interface Props {
-  extraClassNames?: string;
-  children: JSX.Element | JSX.Element[];
+interface Props {
+  className?: string;
+  componentClass?: any;
 }
 
-export default (props: Props) => {
+const LayoutRow: React.SFC<Props> = (props) => {
+  const {
+    componentClass: Component,
+    className,
+    ...otherProps
+  } = props;
+
   return (
-    // add row prop to children, not adding a useless wrapper div.
-    <div className={classNames(props.extraClassNames, 'row')}>
-      {props.children}
-    </div>
+    <Component {...otherProps} className={classNames(className, 'row')}/>
   );
 };
+
+LayoutRow.defaultProps = {
+  componentClass: 'div'
+};
+
+export default LayoutRow;

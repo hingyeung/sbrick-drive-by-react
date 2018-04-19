@@ -1,15 +1,25 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
-export interface Props {
-  extraClassNames?: string;
-  children: JSX.Element | JSX.Element[];
+interface Props {
+  className?: string;
+  componentClass?: any;
 }
 
-export default (props: Props) => {
+const LayoutContainer: React.SFC<Props> = (props) => {
+  const {
+    className,
+    componentClass: Component,
+    ...otherProps
+  } = props;
+
   return (
-    <div className={classNames(props.extraClassNames, 'container')}>
-        {props.children}
-    </div>
+    <Component {...otherProps} className={classNames(className, 'container')}/>
   );
 };
+
+LayoutContainer.defaultProps = {
+  componentClass: 'div'
+};
+
+export default LayoutContainer;
