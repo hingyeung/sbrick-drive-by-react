@@ -2,7 +2,7 @@ import * as React from 'react';
 import LayoutCol from './LayoutCol';
 import { shallow } from 'enzyme';
 
-describe('LayoutCellComponent', () => {
+describe('LayoutColComponent', () => {
   const hasClassWithPrefix = (wrapper: any, prefix: string) => {
     expect(
       wrapper.find('.hello').prop('className').trim().split(/\s+/).filter((thisClass: string) =>
@@ -21,6 +21,18 @@ describe('LayoutCellComponent', () => {
     const wrapper = shallow(<LayoutCol className="extra-class" componentClass={'b'}/>);
     expect(wrapper.find('b').exists()).toBeTruthy();
     expect(wrapper.find('b.col.extra-class')).toHaveLength(1);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should pass other props to componentClass', () => {
+    const wrapper = shallow(
+      <LayoutCol
+        className="extra-class"
+        componentClass={'b'}
+        propsForComponent={{A: 'a', B: 'b'}}
+      />);
+    expect(wrapper.find('b').prop('A')).toEqual('a');
+    expect(wrapper.find('b').prop('B')).toEqual('b');
     expect(wrapper).toMatchSnapshot();
   });
 

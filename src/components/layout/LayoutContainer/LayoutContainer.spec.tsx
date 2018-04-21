@@ -2,7 +2,7 @@ import { shallow } from 'enzyme';
 import * as React from 'react';
 import LayoutContainer from './LayoutContainer';
 import LayoutRow from '../LayoutRow/LayoutRow';
-import LayoutCol from '../LayoutCell/LayoutCol';
+import LayoutCol from '../LayoutCol/LayoutCol';
 
 describe('LayoutContainer', () => {
   it('should render className in props', () => {

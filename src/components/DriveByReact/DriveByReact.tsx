@@ -17,11 +17,11 @@ import { TemplateInstructionCard } from '../TemplateInstructionCard/TemplateInst
 import { PendingInstructionCard } from '../PendingInstructionCard/PendingInstructionCard';
 // @ts-ignore
 import dragIcon from '../../assets/drag.svg';
-import ControlPanel from '../ControlPanel/ControlPanel';
-import LayoutCell from '../layout/LayoutCell/LayoutCell';
 import LayoutRow from '../layout/LayoutRow/LayoutRow';
 import LayoutContainer from '../layout/LayoutContainer/LayoutContainer';
 import * as classNames from 'classnames';
+import LayoutCol from '../layout/LayoutCol/LayoutCol';
+import ControlPanel from '../ControlPanel/ControlPanel';
 
 interface DriveByReactProps {
   onInstructionsExecuted?: (result: any) => void;
@@ -206,31 +206,39 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
       >
         <LayoutContainer className={classNames('drive-by-react-container', this.componentContainerClasses())}>
           <LayoutRow>
-            <LayoutCell extraClassNames="left-container" sm={4}>
-              <LayoutRow className="template-instruction-list-container">
-                <TemplateInstructionList decorateForDragInProgress={this.state.dragInProgress}>
-                  {this.buildInstructionSourceContent()}
-                </TemplateInstructionList>
+            <LayoutCol className="left-container" sm={4}>
+              <LayoutRow
+                className="template-instruction-list-container"
+                componentClass={TemplateInstructionList}
+                propsForComponent={{
+                  decorateForDragInProgress: this.state.dragInProgress
+                }}
+              >
+                {this.buildInstructionSourceContent()}
               </LayoutRow>
-              <LayoutRow className="control-container">
-                <ControlPanel
-                  onClearCLick={this.clearInstructionsInQueue}
-                  onPlayClick={this.playInstructionsInQueue}
-                />
-              </LayoutRow>
-            </LayoutCell>
-            <LayoutCell extraClassNames="middle-container" sm={2}>
+              <LayoutRow
+                className="control-container"
+                componentClass={ControlPanel}
+                propsForComponent={{
+                  'onClearCLick': this.clearInstructionsInQueue,
+                  'onPlayClick': this.playInstructionsInQueue
+                }}
+              />
+            </LayoutCol>
+            <LayoutCol className="middle-container" sm={2}>
               <LayoutRow className="middle-container__hint-content">
                 <img className="middle-container__icon" src={dragIcon}/>
               </LayoutRow>
-            </LayoutCell>
-            <LayoutCell extraClassNames="right-container" sm={6}>
-              <LayoutRow className="pending-instruction-queue-container">
-                <PendingInstructionQueue decorateForDragInProgress={this.state.dragInProgress}>
-                  {this.buildInstructionDroppables()}
-                </PendingInstructionQueue>
+            </LayoutCol>
+            <LayoutCol className="right-container" sm={6}>
+              <LayoutRow
+                className="pending-instruction-queue-container"
+                componentClass={PendingInstructionQueue}
+                propsForComponent={{'decorateForDragInProgress': this.state.dragInProgress}}
+              >
+                {this.buildInstructionDroppables()}
               </LayoutRow>
-            </LayoutCell>
+            </LayoutCol>
           </LayoutRow>
           <LayoutRow>
             <div>{this.state.status}</div>

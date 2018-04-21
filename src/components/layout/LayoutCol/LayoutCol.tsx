@@ -1,13 +1,14 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
-interface LayoutCellComponentProps {
+interface LayoutColComponentProps {
   className?: string;
   componentClass?: any;
   sm?: number;
   md?: number;
   lg?: number;
   xl?: number;
+  propsForComponent?: object;
 }
 
 const isValidBootstrapColumnValue = function (value: number) {
@@ -23,15 +24,20 @@ const buildBootstrapGridColumnClasses = function (props: any): any {
   };
 };
 
-const LayoutCol: React.SFC<LayoutCellComponentProps> = (props) => {
+const LayoutCol: React.SFC<LayoutColComponentProps> = (props) => {
   const {
     componentClass: Component,
     className,
-    ...otherProps
+    propsForComponent,
+    ...otherProps,
   } = props;
 
   return (
-    <Component {...otherProps} className={classNames(className, 'col', buildBootstrapGridColumnClasses(otherProps))}/>
+    <Component
+      {...propsForComponent}
+      className={classNames(className, 'col', buildBootstrapGridColumnClasses(otherProps))}
+      {...otherProps}
+    />
   );
 };
 

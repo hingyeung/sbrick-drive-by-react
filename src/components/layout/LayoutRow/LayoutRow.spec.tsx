@@ -1,7 +1,7 @@
 import LayoutRow from './LayoutRow';
 import { shallow } from 'enzyme';
 import * as React from 'react';
-import LayoutCol from '../LayoutCell/LayoutCol';
+import LayoutCol from '../LayoutCol/LayoutCol';
 
 describe('LayoutRow', () => {
   it('should render className in props', () => {
@@ -10,6 +10,12 @@ describe('LayoutRow', () => {
 
     expect(wrapper.find('.my-row')).toHaveLength(1);
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should preserve children element', () => {
+    const wrapper =
+      shallow(<LayoutRow><div id="find-me">ABC</div></LayoutRow>);
+    expect(wrapper.find('#find-me').contains('ABC')).toBeTruthy();
   });
 
   it('should render using specified componentClass in props', () => {
@@ -21,7 +27,7 @@ describe('LayoutRow', () => {
           </LayoutCol>
         </LayoutRow>);
 
-    expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('b.my-row')).toHaveLength(1);
+    expect(wrapper).toMatchSnapshot();
   });
 });
