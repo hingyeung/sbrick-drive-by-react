@@ -1,8 +1,13 @@
+.pending-instruction-queue__title {
+    background-color: var(--pending-instruction-title-background-colour);
+    color: var(--pending-instruction-title-font-colour);
+}
+
 .pending-instruction-queue__list {
-    border: darkgray solid 1px;
     height: 400px;
-    padding: 4px;
     overflow: auto;
+    background-color: var(--pending-instruction-list-background-colour);
+    color: var(--pending-instruction-list-font-colour);
 }
 
 .pending-instruction-queue__list--dragging-over {
@@ -11,5 +16,4 @@
 
 .pending-instruction-queue__list--drag-in-progress {
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-    border: 1px solid rgba(81, 203, 238, 1);
 }

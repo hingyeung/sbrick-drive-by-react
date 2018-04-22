@@ -2,6 +2,8 @@ import { Droppable, DroppableProvided } from 'react-beautiful-dnd';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import './InstructionList.css';
+import LayoutRow from '../layout/LayoutRow/LayoutRow';
+import LayoutCol from '../layout/LayoutCol/LayoutCol';
 
 export interface Props {
   droppabledId: string;
@@ -14,44 +16,47 @@ export interface Props {
 export default (props: Props) => (
   <Droppable droppableId={props.droppabledId}>
     {(provided: DroppableProvided, snapshot) => (
-      <div
-        className={
-          classNames(
-            'col-sm-12',
-            props.className,
-            'instruction-list'
-          )}
-      >
-        <h2
+      <LayoutRow>
+        <LayoutCol
           className={
             classNames(
-            'row',
-            'instruction-list__title',
-            `${props.className}__title`,
-          )}
+              'col-sm-12',
+              props.className,
+              'instruction-list'
+            )}
         >
-          {props.title}
-        </h2>
-        <div className="row">
-          <div
-            ref={provided.innerRef}
-            {...provided.droppableProps}
-            className={
-              classNames(
-                'instruction-list__list',
-                `${props.className}__list`,
-                {
-                  [`${props.className}__list--drag-in-progress`]: props.decorateForDragInProgress,
-                  [`${props.className}__list--dragging-over`]: snapshot.isDraggingOver
-                }
-              )
-            }
-          >
-            {props.children}
-            {provided.placeholder}
-          </div>
-        </div>
-      </div>
+          <LayoutRow>
+            <LayoutCol
+              className={
+                classNames(
+                  'instruction-list__title',
+                  `${props.className}__title`,
+                )}
+            >
+              {props.title}
+            </LayoutCol>
+          </LayoutRow>
+          <LayoutRow>
+            <div
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+              className={
+                classNames(
+                  'instruction-list__list',
+                  `${props.className}__list`,
+                  {
+                    [`${props.className}__list--drag-in-progress`]: props.decorateForDragInProgress,
+                    [`${props.className}__list--dragging-over`]: snapshot.isDraggingOver
+                  }
+                )
+              }
+            >
+              {props.children}
+              {provided.placeholder}
+            </div>
+          </LayoutRow>
+        </LayoutCol>
+      </LayoutRow>
     )}
   </Droppable>
 );

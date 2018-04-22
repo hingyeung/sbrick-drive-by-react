@@ -1,7 +1,7 @@
-import * as React from 'react';
-import DriveByReact from './components/DriveByReact/DriveByReact';
 import 'bootstrap/dist/css/bootstrap-reboot.css';
 import 'bootstrap/dist/css/bootstrap-grid.css';
+import * as React from 'react';
+import DriveByReact from './components/DriveByReact/DriveByReact';
 import './App.css';
 import LayoutContainer from './components/layout/LayoutContainer/LayoutContainer';
 import LayoutRow from './components/layout/LayoutRow/LayoutRow';
@@ -13,12 +13,8 @@ export default class App extends React.Component<{}, {}> {
   render() {
     return (
       <LayoutContainer className="app-container">
-        <LayoutRow>
-          <LayoutCol componentClass={Header}/>
-        </LayoutRow>
-        <LayoutRow>
-          <LayoutCol componentClass={DriveByReact}/>
-        </LayoutRow>
+        <Header/>
+        <DriveByReact/>
         <LayoutRow>
           <LayoutCol componentClass={Footer}/>
         </LayoutRow>

@@ -1,3 +1,8 @@
 .instruction-list__list {
     width: 100%;
 }
+
+.instruction-list__title {
+    text-align: center;
+    padding: 30px;
+}

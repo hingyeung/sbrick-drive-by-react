@@ -1,6 +1,24 @@
+:root {
+    --accent-colour: #139AF9;
+
+    --template-instruction-title-background-color: #364055;
+    --template-instruction-title-font-color: #CBD5E9;
+    --template-instruction-list-background-color: #2D3545;
+    --template-instruction-list-font-color: #91A1BC;
+
+    --pending-instruction-title-background-colour: #E6EEF9;
+    --pending-instruction-title-font-colour: #A1B1CA;
+    --pending-instruction-list-background-colour: #E6EEF9;
+    --pending-instruction-list-font-colour: #A8B7CE;
+
+    --menu-background-colour: white;
+    --menu-font-colour: #8FA2C2;
+}
+
 .app-container {
     width: 80%;
     margin: 0 auto;
+    font-family: "Helvetica Neue", sans-serif;
 }
 
 footer {
@@ -9,4 +27,19 @@ footer {
 
 footer, footer a {
     color: rgba(0, 0, 0, 0.2);
+}
+
+.row.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+}
+.row.no-gutters > [class^="col-"],
+.row.no-gutters > [class*=" col-"] {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.container.no-gutters {
+    padding-left: 0;
+    padding-right: 0;
 }

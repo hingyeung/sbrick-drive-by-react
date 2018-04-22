@@ -1,0 +1,13 @@
+.header__column {
+    padding: 30px;
+}
+
+.header__logo {
+    text-align: center;
+    background-color: var(--accent-colour);
+    color: white;
+}
+
+.header__menu-bar {
+    background-color: var(--menu-background-colour);
+}
