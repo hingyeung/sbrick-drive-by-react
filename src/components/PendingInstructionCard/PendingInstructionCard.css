@@ -1,3 +1,10 @@
 .pending-instruction-card {
-    /*background-color: cornflowerblue;*/
+    /* need this bottom margin to maintain gap between cards that are not being dragged */
+    margin: 0 0 8px 0;
+    border: red solid 1px;
+    border-bottom: solid 1px var(--pending-instruction-border-colour);
+    border-left: solid 1px var(--pending-instruction-border-colour);
+    border-right: solid 1px var(--pending-instruction-border-colour);
+    border-top: solid 5px var(--pending-instruction-dark-border-colour);
+    background-color: var(--pending-instruction-background-colour);
 }

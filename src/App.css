@@ -12,6 +12,10 @@
     --pending-instruction-list-background-colour: #E6EEF9;
     --pending-instruction-list-font-colour: #A8B7CE;
 
+    --pending-instruction-border-colour: var(--template-instruction-list-font-colour);
+    --pending-instruction-dark-border-colour: var(--template-instruction-list-font-colour);
+    --pending-instruction-background-colour: white;
+
     --menu-background-colour: white;
     --menu-font-colour: #8FA2C2;
 }

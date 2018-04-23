@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './DragNDropHelpMessage.css';
 // @ts-ignore
-import dragIcon from '../../assets/drag.svg';
+import dragIcon from '../../assets/drop.svg';
 
 const DragNDropHelpMessage: React.SFC<any> = (props) => {
   return (
