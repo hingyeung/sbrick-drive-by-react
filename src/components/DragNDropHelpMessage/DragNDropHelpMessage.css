@@ -1,0 +1,28 @@
+.dnd-help-message {
+    width: 100%;
+    height: 100%;
+    border: var(--pending-instruction-list-font-colour) 2px dashed;
+}
+
+.dnd-help-message__icon {
+    text-align: center;
+    padding: 90px 0 30px 0;
+}
+
+.dnd-help-message__icon > img {
+    width: 150px;
+    height: 150px;
+}
+
+.dnd-help-message__caption {
+    font-size: xx-large;
+    text-transform: uppercase;
+}
+
+.dnd-help-message__sub-caption {
+    font-size: x-large;
+}
+
+.dnd-help-message__caption, .dnd-help-message__sub-caption {
+    text-align: center;
+}

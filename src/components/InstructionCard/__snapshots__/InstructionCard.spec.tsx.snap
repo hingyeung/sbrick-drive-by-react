@@ -18,7 +18,9 @@ exports[`InstructionCard should render properly 1`] = `
     index={0}
   >
     <div>
-      <div>
+      <div
+        className="draggable-container"
+      >
         <div
           className="instruction-card  extraClass"
           style={Object {}}
@@ -57,7 +59,9 @@ exports[`InstructionCard should render properly when dragging 1`] = `
     index={0}
   >
     <div>
-      <div>
+      <div
+        className="draggable-container"
+      >
         <div
           className="instruction-card instruction-card--is-dragging extraClass extraClass--is-dragging"
           style={Object {}}

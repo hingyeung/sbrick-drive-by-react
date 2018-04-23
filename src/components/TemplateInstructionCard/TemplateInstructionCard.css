@@ -1,4 +1,5 @@
 .template-instruction-card {
-    background-color: var(--template-instruction-list-background-color);
-    color: var(--template-instruction-list-font-color);
+    background-color: var(--template-instruction-list-background-colour);
+    color: var(--template-instruction-list-font-colour);
+    border: solid 1px var(--template-instruction-list-separtor-colour);
 }

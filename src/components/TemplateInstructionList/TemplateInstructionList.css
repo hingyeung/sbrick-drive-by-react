@@ -1,4 +1,4 @@
 .template-instruction-list__title {
-    background-color: var(--template-instruction-title-background-color);
-    color: var(--template-instruction-title-font-color);
+    background-color: var(--template-instruction-title-background-colour);
+    color: var(--template-instruction-title-font-colour);
 }

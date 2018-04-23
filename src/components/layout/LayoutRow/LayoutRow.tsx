@@ -5,6 +5,7 @@ interface Props {
   className?: string;
   componentClass?: any;
   propsForComponent?: object;
+  ref?: any;
 }
 
 const LayoutRow: React.SFC<Props> = (props) => {

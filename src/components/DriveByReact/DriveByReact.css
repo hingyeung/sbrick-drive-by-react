@@ -26,6 +26,12 @@
 }
 
 
+.draggable-container {
+    /* the react-beautiful-dnd droppable just don't work well with Bootstrap because of the extra div it needs. */
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
 
 /*.draggable-item {*/
     /*background-color: grey;*/

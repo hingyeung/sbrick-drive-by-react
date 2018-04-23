@@ -18,9 +18,9 @@ export default (props: Props) => (
     {(provided: DroppableProvided, snapshot) => (
       <LayoutRow>
         <LayoutCol
+          sm={12}
           className={
             classNames(
-              'col-sm-12',
               props.className,
               'instruction-list'
             )}
@@ -36,25 +36,26 @@ export default (props: Props) => (
               {props.title}
             </LayoutCol>
           </LayoutRow>
-          <LayoutRow>
-            <div
-              ref={provided.innerRef}
-              {...provided.droppableProps}
-              className={
-                classNames(
-                  'instruction-list__list',
-                  `${props.className}__list`,
-                  {
-                    [`${props.className}__list--drag-in-progress`]: props.decorateForDragInProgress,
-                    [`${props.className}__list--dragging-over`]: snapshot.isDraggingOver
-                  }
-                )
-              }
-            >
+          <div
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+            className={
+              classNames(
+                'row',  // react-beautiful-dnd doesn't work with my LayoutRow
+                'instruction-list__list',
+                `${props.className}__list`,
+                {
+                  [`${props.className}__list--drag-in-progress`]: props.decorateForDragInProgress,
+                  [`${props.className}__list--dragging-over`]: snapshot.isDraggingOver
+                }
+              )
+            }
+          >
+            <LayoutCol className="col-wrapping-instruction-list" sm={12}>
               {props.children}
               {provided.placeholder}
-            </div>
-          </LayoutRow>
+            </LayoutCol>
+          </div>
         </LayoutCol>
       </LayoutRow>
     )}

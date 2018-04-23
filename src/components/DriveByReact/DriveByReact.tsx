@@ -225,9 +225,10 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
           <LayoutCol className="right-container" sm={8}>
             <LayoutRow className="pending-instruction-queue-container">
               <LayoutCol>
-                <PendingInstructionQueue decorateForDragInProgress={this.state.dragInProgress}>
-                  {this.buildInstructionDroppables()}
-                </PendingInstructionQueue>
+                <PendingInstructionQueue
+                  decorateForDragInProgress={this.state.dragInProgress}
+                  instructions={this.state.instructionQueue}
+                />
               </LayoutCol>
             </LayoutRow>
           </LayoutCol>

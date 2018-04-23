@@ -1,12 +1,12 @@
 import { SBrickCommand } from '../models/SBrickCommand';
 // @ts-ignore
-import ForwardIcon from '../assets/instruction-forward.svg';
+import ForwardIcon from '../assets/up-arrow.svg';
 // @ts-ignore
-import BackwardIcon from '../assets/instruction-backward.svg';
+import BackwardIcon from '../assets/down-arrow.svg';
 // @ts-ignore
-import LeftIcon from '../assets/instruction-left.svg';
+import LeftIcon from '../assets/left-arrow.svg';
 // @ts-ignore
-import RightIcon from '../assets/instruction-right.svg';
+import RightIcon from '../assets/right-arrow.svg';
 // @ts-ignore
 import UnknownIcon from '../assets/instruction-unknown.svg';
 

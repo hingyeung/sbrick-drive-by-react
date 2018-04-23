@@ -22,7 +22,7 @@ const buildClasses = (className: string | undefined, isDragging: boolean) => {
 export default (props: Props) => (
   <Draggable draggableId={props.instruction.id} index={props.index}>
     {(provided, snapshot) => (
-      <div>
+      <div className="draggable-container">
         <div
           ref={provided.innerRef}
           className={buildClasses(props.className, snapshot.isDragging)}
