@@ -1,3 +1,9 @@
+.pending-instruction-queue__container {
+    min-height: 100%;
+    border: var(--pending-instruction-list-font-colour) 2px dashed;
+    padding: 20px;
+}
+
 .pending-instruction-queue__title {
     background-color: var(--pending-instruction-title-background-colour);
     color: var(--pending-instruction-title-font-colour);
@@ -8,6 +14,7 @@
     overflow: auto;
     background-color: var(--pending-instruction-list-background-colour);
     color: var(--pending-instruction-list-font-colour);
+    padding: 20px;
 }
 
 .pending-instruction-queue__list--dragging-over {

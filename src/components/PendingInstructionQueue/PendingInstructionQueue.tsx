@@ -4,6 +4,8 @@ import InstructionList from '../InstructionList/InstructionList';
 import { PendingInstructionCard } from '../PendingInstructionCard/PendingInstructionCard';
 import { Instruction } from '../../models/Instruction';
 import DragNDropHelpMessage from '../DragNDropHelpMessage/DragNDropHelpMessage';
+import LayoutRow from '../layout/LayoutRow/LayoutRow';
+import LayoutCol from '../layout/LayoutCol/LayoutCol';
 
 export const DROPPABLE_ID = 'pending-instruction-queue-droppable';
 
@@ -27,6 +29,11 @@ export default (props: Props) => (
     className="pending-instruction-queue"
     title="Queued Instructions"
   >
-    {props.instructions.length === 0 ? <DragNDropHelpMessage/> : renderInstructionCards(props.instructions)}
+    <LayoutRow className="pending-instruction-queue__container">
+      <LayoutCol>
+        {props.instructions.length === 0 ? <DragNDropHelpMessage/> : renderInstructionCards(props.instructions)}
+        {/*{renderInstructionCards(props.instructions)}*/}
+      </LayoutCol>
+    </LayoutRow>
   </InstructionList>
 );

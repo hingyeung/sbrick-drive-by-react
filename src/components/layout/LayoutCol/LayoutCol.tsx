@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 
 interface LayoutColComponentProps {
-  className?: string;
+  // className?: string;
   componentClass?: any;
   sm?: number;
   md?: number;
@@ -24,7 +24,9 @@ const buildBootstrapGridColumnClasses = function (props: any): any {
   };
 };
 
-const LayoutCol: React.SFC<LayoutColComponentProps> = (props) => {
+const LayoutCol: React.SFC<LayoutColComponentProps &
+  React.HTMLAttributes<HTMLDivElement> &
+  React.ClassAttributes<HTMLDivElement>> = (props) => {
   const {
     componentClass: Component,
     className,

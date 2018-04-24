@@ -19,10 +19,10 @@ exports[`InstructionCard should render properly 1`] = `
   >
     <div>
       <div
-        className="draggable-container"
+        className="row"
       >
         <div
-          className="instruction-card  extraClass"
+          className="col instruction-card  extraClass"
           style={Object {}}
         >
           <img
@@ -60,10 +60,10 @@ exports[`InstructionCard should render properly when dragging 1`] = `
   >
     <div>
       <div
-        className="draggable-container"
+        className="row"
       >
         <div
-          className="instruction-card instruction-card--is-dragging extraClass extraClass--is-dragging"
+          className="col instruction-card instruction-card--is-dragging extraClass extraClass--is-dragging"
           style={Object {}}
         >
           <img

@@ -16,15 +16,11 @@ export interface Props {
 export default (props: Props) => (
   <Droppable droppableId={props.droppabledId}>
     {(provided: DroppableProvided, snapshot) => (
+      // this outer-most LayoutRow and LayoutCol are just here so that I can stick to my self-imposed
+      // component standard where self-contained component should have Row as root element. And parent
+      // should always wrap children in Col. They could be replaced by <> </> without side effect.
       <LayoutRow>
-        <LayoutCol
-          sm={12}
-          className={
-            classNames(
-              props.className,
-              'instruction-list'
-            )}
-        >
+        <LayoutCol>
           <LayoutRow>
             <LayoutCol
               className={
@@ -41,7 +37,7 @@ export default (props: Props) => (
             {...provided.droppableProps}
             className={
               classNames(
-                'row',  // react-beautiful-dnd doesn't work with my LayoutRow
+                'row',  // react-beautiful-dnd doesn't work with my LayoutRow because "ref" is not available in SFC
                 'instruction-list__list',
                 `${props.className}__list`,
                 {

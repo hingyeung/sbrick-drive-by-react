@@ -10,8 +10,9 @@ export interface Props {
   icon?: any;
 }
 
-const buildClasses = (className: string | undefined, isDragging: boolean) => {
+const buildClassesForInstructionCard = (className: string | undefined, isDragging: boolean) => {
   return [
+    'col',
     'instruction-card',
     isDragging ? 'instruction-card--is-dragging' : '',
     className ? className : '',
@@ -22,10 +23,11 @@ const buildClasses = (className: string | undefined, isDragging: boolean) => {
 export default (props: Props) => (
   <Draggable draggableId={props.instruction.id} index={props.index}>
     {(provided, snapshot) => (
-      <div className="draggable-container">
+      // can't use LayoutRow and LayoutCol here because "ref" attribute is not available to SFC
+      <div className="row">
         <div
           ref={provided.innerRef}
-          className={buildClasses(props.className, snapshot.isDragging)}
+          className={buildClassesForInstructionCard(props.className, snapshot.isDragging)}
           style={{...provided.draggableProps.style as object}}
           {...provided.dragHandleProps}
         >
