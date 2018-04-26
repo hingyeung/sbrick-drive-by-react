@@ -18,6 +18,9 @@
 
     --menu-background-colour: white;
     --menu-font-colour: #8FA2C2;
+
+    --active-button-background-colour: var(--accent-colour);
+    --active-button-font-colour: white;
 }
 
 .app-container {

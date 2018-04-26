@@ -7,7 +7,7 @@ describe('ControlPanel', () => {
     const callback = jest.fn();
     const wrapper = shallow(<ControlPanel onPlayClick={callback} onClearCLick={jest.fn()} />);
 
-    wrapper.find('.control-container__play-btn').simulate('click');
+    wrapper.find('.control-panel__play-btn').simulate('click');
 
     expect(callback).toHaveBeenCalledTimes(1);
   });
@@ -16,7 +16,7 @@ describe('ControlPanel', () => {
     const callback = jest.fn();
     const wrapper = shallow(<ControlPanel onPlayClick={jest.fn()} onClearCLick={callback} />);
 
-    wrapper.find('.control-container__clear-btn').simulate('click');
+    wrapper.find('.control-panel__clear-btn').simulate('click');
 
     expect(callback).toHaveBeenCalledTimes(1);
   });

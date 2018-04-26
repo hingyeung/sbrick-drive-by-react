@@ -1,0 +1,8 @@
+.btn {
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+.btn > .svg-inline--fa {
+    margin-right: 7px;
+}

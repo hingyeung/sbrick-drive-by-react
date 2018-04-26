@@ -1,0 +1,4 @@
+.active-btn {
+    background-color: var(--active-button-background-colour);
+    color: var(--active-button-font-colour);
+}

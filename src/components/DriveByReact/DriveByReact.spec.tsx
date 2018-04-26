@@ -134,7 +134,7 @@ describe('App', function () {
 
     const wrapper = mount(<DriveByReact onInstructionsExecuted={onInstructionExecuted}/>);
     wrapper.setState(state);
-    wrapper.find('.control-container__play-btn').simulate('click');
+    wrapper.find('button.control-panel__play-btn').simulate('click');
   });
 
   it('should clear instructions in queue', (done) => {
@@ -152,6 +152,6 @@ describe('App', function () {
 
     wrapper = mount(<DriveByReact onInstructionsCleared={onInstructionsCleared}/>);
     wrapper.setState(state);
-    wrapper.find('.control-container__clear-btn').simulate('click');
+    wrapper.find('button.control-panel__clear-btn').simulate('click');
   });
 });

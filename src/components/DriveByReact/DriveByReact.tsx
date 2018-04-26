@@ -213,28 +213,28 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
                 </TemplateInstructionList>
               </LayoutCol>
             </LayoutRow>
-            <LayoutRow>
-              <LayoutCol className="control-container">
-                <ControlPanel
-                  onClearCLick={this.clearInstructionsInQueue}
-                  onPlayClick={this.playInstructionsInQueue}
-                />
-              </LayoutCol>
-            </LayoutRow>
           </LayoutCol>
           <LayoutCol className="right-container" sm={8}>
-            <LayoutRow className="pending-instruction-queue-container">
-              <LayoutCol>
+            {/*<LayoutRow className="pending-instruction-queue-container">*/}
+              {/*<LayoutCol>*/}
                 <PendingInstructionQueue
                   decorateForDragInProgress={this.state.dragInProgress}
                   instructions={this.state.instructionQueue}
                 />
-              </LayoutCol>
-            </LayoutRow>
+              {/*</LayoutCol>*/}
+            {/*</LayoutRow>*/}
+            {/*<LayoutRow>*/}
+              {/*<LayoutCol className="control-container">*/}
+                <ControlPanel
+                  onClearCLick={this.clearInstructionsInQueue}
+                  onPlayClick={this.playInstructionsInQueue}
+                />
+              {/*</LayoutCol>*/}
+            {/*</LayoutRow>*/}
           </LayoutCol>
         </LayoutRow>
         <LayoutRow>
-          <div>{this.state.status}</div>
+          <LayoutCol>{this.state.status}</LayoutCol>
         </LayoutRow>
       </DragDropContext>
     );

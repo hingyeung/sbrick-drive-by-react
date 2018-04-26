@@ -10,7 +10,6 @@
 }
 
 .pending-instruction-queue__list {
-    height: 400px;
     overflow: auto;
     background-color: var(--pending-instruction-list-background-colour);
     color: var(--pending-instruction-list-font-colour);

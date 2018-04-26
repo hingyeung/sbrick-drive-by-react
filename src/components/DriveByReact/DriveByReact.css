@@ -1,9 +1,3 @@
-.drive-by-react-container {
-    /*display: flex;*/
-    /*flex-direction: row;*/
-    height: 500px;
-}
-
 .middle-container {
     display: flex;
     align-items: center;
