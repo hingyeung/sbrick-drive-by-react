@@ -9,7 +9,7 @@ export default () => {
   return (
     <LayoutRow className="header align-items-center">
       <LayoutCol sm={4} className="header__logo">
-        <img className="header__logo-img" src={SBrickLogo}/>
+        <img className="header__logo-img" src={SBrickLogo}/> <span className="header__logo--dim">drive</span>SBrick
       </LayoutCol>
       <LayoutCol sm={8} className="header__menu-bar">
         Drive SBrick by React
