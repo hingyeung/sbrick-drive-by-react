@@ -1,5 +1,5 @@
-.header__column {
-    padding: 30px;
+.header {
+    background-color: var(--accent-colour);
 }
 
 .header__logo {
@@ -8,6 +8,16 @@
     color: white;
 }
 
+.header__logo-img {
+    width: 60px;
+    height: 60px;
+    opacity: 0.85;
+}
+
 .header__menu-bar {
+    padding: 12px;
+    text-align: center;
     background-color: var(--menu-background-colour);
+    color: var(--menu-font-colour);
+    font-size: xx-large;
 }

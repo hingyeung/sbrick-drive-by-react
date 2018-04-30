@@ -233,7 +233,7 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
             {/*</LayoutRow>*/}
           </LayoutCol>
         </LayoutRow>
-        <LayoutRow>
+        <LayoutRow className="debug-status">
           <LayoutCol>{this.state.status}</LayoutCol>
         </LayoutRow>
       </DragDropContext>

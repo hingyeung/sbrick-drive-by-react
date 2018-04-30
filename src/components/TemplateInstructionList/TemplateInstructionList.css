@@ -2,3 +2,7 @@
     background-color: var(--template-instruction-title-background-colour);
     color: var(--template-instruction-title-font-colour);
 }
+
+.template-instruction-list {
+    background-color: var(--template-instruction-background-colour);
+}

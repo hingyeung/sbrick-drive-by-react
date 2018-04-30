@@ -1,11 +1,15 @@
 :root {
     --accent-colour: #139AF9;
 
-    --template-instruction-title-background-colour: #364055;
+    --body-background-colour: #c6bccd;
+
+    /*--template-instruction-title-background-colour: #364055;*/
+    --template-instruction-title-background-colour: #40495e;
     --template-instruction-title-font-colour: #CBD5E9;
     --template-instruction-list-background-colour: #2D3545;
     --template-instruction-list-font-colour: #91A1BC;
     --template-instruction-list-separtor-colour: var(--template-instruction-title-background-colour);
+    --template-instruction-background-colour: #353c4c;
 
     --pending-instruction-title-background-colour: #E6EEF9;
     --pending-instruction-title-font-colour: #A1B1CA;
@@ -16,25 +20,25 @@
     --pending-instruction-dark-border-colour: var(--template-instruction-list-font-colour);
     --pending-instruction-background-colour: white;
 
+    --control-panel-background-colour: var(--pending-instruction-list-background-colour);
+
     --menu-background-colour: white;
     --menu-font-colour: #8FA2C2;
 
     --active-button-background-colour: var(--accent-colour);
     --active-button-font-colour: white;
+
+    --footer-background-colour: #2e3748;
+}
+
+body {
+    background-color: var(--body-background-colour);
 }
 
 .app-container {
     width: 80%;
     margin: 0 auto;
     font-family: "Helvetica Neue", sans-serif;
-}
-
-footer {
-    font-size: x-small;
-}
-
-footer, footer a {
-    color: rgba(0, 0, 0, 0.2);
 }
 
 .row.no-gutters {

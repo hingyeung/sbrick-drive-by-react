@@ -1,0 +1,13 @@
+.footer {
+    background-color: var(--footer-background-colour);
+    padding: 30px;
+    font-size: x-small;
+}
+
+.footer__credit {
+    text-align: right;
+}
+
+.footer, .footer__credit-link {
+    color: rgba(255, 255, 255, 0.2);
+}

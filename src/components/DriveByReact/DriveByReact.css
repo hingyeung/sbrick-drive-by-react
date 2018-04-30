@@ -4,6 +4,10 @@
     justify-content: center;
 }
 
+.left-container {
+    background-color: var(--template-instruction-background-colour);
+}
+
 .middle-container__icon {
     height: 45px;
     width: 45px;
@@ -17,6 +21,10 @@
 .btn {
     width: 80%;
     margin-left: 10%;
+}
+
+.debug-status {
+    display: none;
 }
 
 /*.draggable-item {*/
