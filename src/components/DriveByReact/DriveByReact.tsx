@@ -215,22 +215,14 @@ export default class DriveByReact extends Component<DriveByReactProps, State> {
             </LayoutRow>
           </LayoutCol>
           <LayoutCol className="right-container" sm={8}>
-            {/*<LayoutRow className="pending-instruction-queue-container">*/}
-              {/*<LayoutCol>*/}
-                <PendingInstructionQueue
-                  decorateForDragInProgress={this.state.dragInProgress}
-                  instructions={this.state.instructionQueue}
-                />
-              {/*</LayoutCol>*/}
-            {/*</LayoutRow>*/}
-            {/*<LayoutRow>*/}
-              {/*<LayoutCol className="control-container">*/}
-                <ControlPanel
-                  onClearCLick={this.clearInstructionsInQueue}
-                  onPlayClick={this.playInstructionsInQueue}
-                />
-              {/*</LayoutCol>*/}
-            {/*</LayoutRow>*/}
+            <PendingInstructionQueue
+              decorateForDragInProgress={this.state.dragInProgress}
+              instructions={this.state.instructionQueue}
+            />
+            <ControlPanel
+              onClearCLick={this.clearInstructionsInQueue}
+              onPlayClick={this.playInstructionsInQueue}
+            />
           </LayoutCol>
         </LayoutRow>
         <LayoutRow className="debug-status">

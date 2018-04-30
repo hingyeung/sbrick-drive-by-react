@@ -32,7 +32,6 @@ export default (props: Props) => (
     <LayoutRow className="pending-instruction-queue__container">
       <LayoutCol>
         {props.instructions.length === 0 ? <DragNDropHelpMessage/> : renderInstructionCards(props.instructions)}
-        {/*{renderInstructionCards(props.instructions)}*/}
       </LayoutCol>
     </LayoutRow>
   </InstructionList>
