@@ -12,10 +12,14 @@
 .instruction-card .instruction-card__icon {
     width: 25px;
     height: 25px;
-    margin-left: 40px;
+    /*margin-left: 40px;*/
 }
 
 .instruction-card .instruction-card__label {
-    margin-left: 40px;
+    /*margin-left: 40px;*/
     text-transform: uppercase;
+}
+
+.instruction-card__detail {
+    padding: 0 15px 0 40px;
 }

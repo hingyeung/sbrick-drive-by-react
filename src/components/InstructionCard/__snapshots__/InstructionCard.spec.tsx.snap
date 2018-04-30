@@ -25,15 +25,57 @@ exports[`InstructionCard should render properly 1`] = `
           className="col instruction-card  extraClass"
           style={Object {}}
         >
-          <img
-            className="instruction-card__icon"
-            src="icon"
-          />
-          <span
-            className="instruction-card__label"
+          <LayoutRow
+            className="instruction-card__detail"
+            componentClass="div"
           >
-            displayName
-          </span>
+            <div
+              className="instruction-card__detail row"
+            >
+              <LayoutCol
+                componentClass="div"
+                sm={2}
+              >
+                <div
+                  className="col col-sm-2"
+                  sm={2}
+                >
+                  <img
+                    className="instruction-card__icon"
+                    src="icon"
+                  />
+                </div>
+              </LayoutCol>
+              <LayoutCol
+                componentClass="div"
+                sm={8}
+              >
+                <div
+                  className="col col-sm-8"
+                  sm={8}
+                >
+                  <span
+                    className="instruction-card__label"
+                  >
+                    displayName
+                  </span>
+                </div>
+              </LayoutCol>
+              <LayoutCol
+                componentClass="div"
+                sm={2}
+              >
+                <div
+                  className="col col-sm-2"
+                  sm={2}
+                >
+                  <i
+                    className="instruction-card__label-aft-icon fas fa-arrows-alt"
+                  />
+                </div>
+              </LayoutCol>
+            </div>
+          </LayoutRow>
         </div>
       </div>
     </div>
@@ -66,15 +108,57 @@ exports[`InstructionCard should render properly when dragging 1`] = `
           className="col instruction-card instruction-card--is-dragging extraClass extraClass--is-dragging"
           style={Object {}}
         >
-          <img
-            className="instruction-card__icon"
-            src="icon"
-          />
-          <span
-            className="instruction-card__label"
+          <LayoutRow
+            className="instruction-card__detail"
+            componentClass="div"
           >
-            displayName
-          </span>
+            <div
+              className="instruction-card__detail row"
+            >
+              <LayoutCol
+                componentClass="div"
+                sm={2}
+              >
+                <div
+                  className="col col-sm-2"
+                  sm={2}
+                >
+                  <img
+                    className="instruction-card__icon"
+                    src="icon"
+                  />
+                </div>
+              </LayoutCol>
+              <LayoutCol
+                componentClass="div"
+                sm={8}
+              >
+                <div
+                  className="col col-sm-8"
+                  sm={8}
+                >
+                  <span
+                    className="instruction-card__label"
+                  >
+                    displayName
+                  </span>
+                </div>
+              </LayoutCol>
+              <LayoutCol
+                componentClass="div"
+                sm={2}
+              >
+                <div
+                  className="col col-sm-2"
+                  sm={2}
+                >
+                  <i
+                    className="instruction-card__label-aft-icon fas fa-arrows-alt"
+                  />
+                </div>
+              </LayoutCol>
+            </div>
+          </LayoutRow>
         </div>
       </div>
     </div>
