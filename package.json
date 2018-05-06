@@ -2,6 +2,7 @@
   "name": "sbrick-drive-by-react",
   "version": "0.1.0",
   "private": true,
+  "description": "",
   "dependencies": {
     "@types/async": "^2.0.48",
     "async-es": "^2.6.0",
@@ -38,5 +39,7 @@
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ]
-  }
+  },
+  "author": "Samuel Li <samli@samuelli.net>",
+  "license": "ISC""
 }
