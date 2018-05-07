@@ -4,10 +4,11 @@
 This project creates a drag-n-drop web user interface for the RESTful client of [SBrick Drive](https://github.com/hingyeung/sbrick-drive), an library that simplifies the integration with [SBrick](https://www.sbrick.com).
 
 ## How to play?
-1. `npm run start` starts the webapp.
-2. Drag instructions on the left to the instruction queue on the right.
-3. Click "Play" when ready to send queued instructions to SBrick Drive.
-4. Click "Clear" to remove all pending instructions.
+1. Set SBrickDrive RESTful server url in src/configs/$NODE_ENV.json.
+2. `npm run start` starts the webapp.
+3. Drag instructions on the left to the instruction queue on the right.
+4. Click "Play" when ready to send queued instructions to SBrick Drive.
+5. Click "Clear" to remove all pending instructions.
 
 ## Development
 `npm run start-stub-server` starts a stub server to simulate a running instance of the RESTful server of SBrick Drive.
