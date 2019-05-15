@@ -1,7 +1,7 @@
 # SBrick Drive by React
 
 ## What is it?
-This project creates a drag-n-drop web user interface for the RESTful client of [SBrick Drive](https://github.com/hingyeung/sbrick-drive), an library that simplifies the integration with [SBrick](https://www.sbrick.com).
+This project creates a drag-n-drop web user interface for the RESTful client of [SBrick Drive](https://github.com/hingyeung/sbrick-drive), an library that simplifies the integration with [SBrick](https://www.sbrick.com) (Bluetooth controller for Lego).
 
 ## How to play?
 1. Set SBrickDrive RESTful server url in src/configs/$NODE_ENV.json.
