@@ -1,5 +1,5 @@
 {
   "sBrickDrive": {
-    "urlPrefix": "http://localhost:8000"
+    "urlPrefix": "http://localhost:3001"
   }
 }

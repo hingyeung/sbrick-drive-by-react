@@ -19,7 +19,7 @@
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts $NODE_DEBUG_OPTION test --env=jsdom",
     "coverage": "react-scripts-ts $NODE_DEBUG_OPTION test --env=jsdom --coverage",
-    "start-stub-server": "./node_modules/.bin/dyson ./dyson-stubs 8000",
+    "start-stub-server": "./node_modules/.bin/dyson ./dyson-stubs 3001",
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
